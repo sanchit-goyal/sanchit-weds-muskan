@@ -394,7 +394,7 @@ ${t.shlokaHero ? '' : `    <div class="deva st" style="--d:0">॥ श्री �
     <div class="sig st" style="--d:2">Goyal Family</div>
   </section>
 </main>
-<footer>Sanchit &amp; Muskan<small>18 · 12 · 2026 · AGRA</small></footer>
+<footer>${t.inviteCard ? "" : "Sanchit &amp; Muskan"}<small>18 · 12 · 2026 · AGRA</small></footer>
 
 <script>window.THEME=${JSON.stringify(cfg)}</script>
 <script src="../assets/theme.js?v=${V('theme.js')}"></script>${t.shloka ? '\n<script src="../assets/shloka.js?v=' + V('shloka.js') + '"></script>' : ''}
