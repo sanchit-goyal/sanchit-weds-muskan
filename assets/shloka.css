@@ -1,0 +1,50 @@
+/* Ganesh vandana intro: shown before anything else, chanted shloka with word-by-word glow */
+#shl{position:fixed;inset:0;z-index:80;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;
+  background:radial-gradient(ellipse 90% 70% at 50% 42%,var(--shl-1,#4b2f6e) 0%,var(--shl-2,#2a1740) 55%,var(--shl-3,#140a22) 100%);color:#f7ecd2;
+  transition:opacity 1.4s ease,transform 1.6s cubic-bezier(.6,0,.2,1);padding:0 20px}
+#shl.out{opacity:0;transform:scale(1.08);pointer-events:none}
+#shl.gone{display:none}
+#shl .rays{position:absolute;left:50%;top:40%;width:220vmax;height:220vmax;margin:-110vmax;opacity:.22;
+  background:repeating-conic-gradient(from 0deg,rgba(255,222,150,.5) 0 1.4deg,transparent 1.4deg 9deg);
+  -webkit-mask:radial-gradient(circle,#000 0,transparent 42%);mask:radial-gradient(circle,#000 0,transparent 42%);animation:shspin 80s linear infinite}
+#shl .halo{position:absolute;left:50%;top:40%;width:min(120vw,700px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(255,214,140,.38),rgba(255,190,120,.10) 40%,transparent 68%);animation:shpulse 4.5s ease-in-out infinite}
+#shl .mandala{position:absolute;left:50%;top:40%;width:min(118vw,640px);transform:translate(-50%,-50%);color:#e9c77b;opacity:.38;pointer-events:none}
+#shl .mandala .r1{transform-origin:50% 50%;animation:shspin 120s linear infinite}
+#shl .mandala .r2{transform-origin:50% 50%;animation:shspin 90s linear infinite reverse}
+@keyframes shspin{to{transform:rotate(1turn)}}
+#shl .mandala .r1,#shl .mandala .r2{transform-box:fill-box}
+@keyframes shpulse{0%,100%{opacity:.75;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}}
+#shl canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#shl .inner{position:relative;z-index:2;max-width:560px;display:flex;flex-direction:column;align-items:center}
+#shl .lotus{width:110px;color:#efcf86;filter:drop-shadow(0 0 14px rgba(255,205,120,.6));opacity:0;transform:translateY(14px) scale(.9);animation:shin 1.6s .2s cubic-bezier(.2,.7,.2,1) forwards}
+#shl .title{font-family:"Tiro Devanagari Hindi",serif;font-size:clamp(30px,8.6vw,46px);line-height:1.3;margin-top:8px;color:#f3d58f;
+  text-shadow:0 2px 14px rgba(255,200,110,.5);opacity:0;animation:shin 1.6s .5s cubic-bezier(.2,.7,.2,1) forwards}
+#shl .title .w.on{color:#fff6d6;text-shadow:0 0 16px rgba(255,214,130,1),0 0 34px rgba(255,170,80,.6)}
+#shl .title .w.done{color:#f8dc9a}
+@keyframes shin{to{opacity:1;transform:none}}
+@keyframes shshine{0%{background-position:100% 0}100%{background-position:-150% 0}}
+#shl .rule{width:min(70vw,300px);height:18px;margin:14px auto 12px;color:#e9c77b;opacity:0;animation:shin 1.2s 1s forwards}
+#shl .verse{font-family:"Tiro Devanagari Hindi",serif;font-size:clamp(19px,5.4vw,27px);line-height:1.9;color:rgba(247,236,210,.5);opacity:0;animation:shin 1.4s 1.2s forwards}
+#shl .verse .ln{display:block}
+#shl .w{display:inline-block;margin:0 .14em;transition:color .5s,text-shadow .6s,transform .5s;}
+#shl .w.on{color:#ffe7a8;text-shadow:0 0 14px rgba(255,205,110,.9),0 0 30px rgba(255,170,80,.45);transform:translateY(-2px) scale(1.05)}
+#shl .w.done{color:#f6e3b4;text-shadow:0 0 8px rgba(255,205,110,.35)}
+#shl .title .w{margin:0 .1em}
+#shl .diyas{display:flex;gap:min(46vw,250px);position:absolute;left:50%;transform:translateX(-50%);bottom:calc(16vh + env(safe-area-inset-bottom));z-index:2;pointer-events:none}
+#shl .diya{width:46px;height:60px;position:relative}
+#shl .diya svg{width:100%;height:100%;overflow:visible}
+#shl .flame{transform-origin:23px 30px;animation:flick 1.6s ease-in-out infinite}
+#shl .diya:nth-child(2) .flame{animation-delay:-.6s}
+@keyframes flick{0%,100%{transform:scale(1,1) rotate(-2deg)}35%{transform:scale(.92,1.08) rotate(2deg)}70%{transform:scale(1.05,.95) rotate(-1deg)}}
+#shl .begin{position:relative;margin-top:26px;padding:13px 26px 13px 22px;border-radius:999px;border:1px solid rgba(239,207,134,.7);color:#fbe7b5;
+  background:linear-gradient(180deg,rgba(255,220,150,.16),rgba(255,220,150,.04));font-family:"Cormorant Garamond",serif;font-size:17px;letter-spacing:.2em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:10px;opacity:0;animation:shin 1.2s 1.8s forwards,shglow 2.6s 3s ease-in-out infinite;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+#shl .begin svg{width:18px;height:18px}
+@keyframes shglow{0%,100%{box-shadow:0 0 0 0 rgba(239,207,134,0)}50%{box-shadow:0 0 26px 2px rgba(239,207,134,.45)}}
+#shl.playing .begin{opacity:0!important;pointer-events:none;transition:opacity .6s;animation:none}
+#shl .skip{position:absolute;right:16px;top:calc(14px + env(safe-area-inset-top));z-index:3;font-family:"Cormorant Garamond",serif;font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:rgba(247,236,210,.65);
+  padding:8px 12px;border:1px solid rgba(247,236,210,.25);border-radius:999px;opacity:0;transition:opacity .6s}
+#shl.playing .skip{opacity:1}
+#shl .prog{position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,transparent,#efcf86);z-index:3;transition:width .25s linear}
+@media (prefers-reduced-motion:reduce){#shl *{animation:none!important;opacity:1!important;transform:none!important}}

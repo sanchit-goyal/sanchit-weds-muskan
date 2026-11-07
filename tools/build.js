@@ -223,6 +223,34 @@ function opening(t) {
     ${tapNames()}</div>`;
 }
 
+
+/* ---------- Ganesh vandana intro (themes with shloka: true) ---------- */
+function shlokaIntro() {
+  const W = a => a.split(' ').map(x => `<span class="w">${x}</span>`).join(' ');
+  let r1 = '', r2 = '';
+  for (let i = 0; i < 16; i++) r1 += `<path d="M200 60C222 110 222 150 200 180 178 150 178 110 200 60Z" transform="rotate(${i * 22.5} 200 200)"/>`;
+  for (let i = 0; i < 32; i++) r2 += `<circle cx="200" cy="26" r="3" transform="rotate(${i * 11.25} 200 200)"/>`;
+  const diya = `<div class="diya"><svg viewBox="0 0 46 60"><defs><radialGradient id="fl"><stop offset="0" stop-color="#fff8d8"/><stop offset=".45" stop-color="#ffc24a"/><stop offset="1" stop-color="#ff7a1a" stop-opacity="0"/></radialGradient></defs>
+    <circle cx="23" cy="24" r="22" fill="url(#fl)" opacity=".45"/><path class="flame" d="M23 8C27 16 30 21 30 26 30 31 27 34 23 34 19 34 16 31 16 26 16 21 19 16 23 8Z" fill="url(#fl)"/>
+    <path d="M2 38C8 52 38 52 44 38Z" fill="#c9893a"/><path d="M2 38C8 46 38 46 44 38" fill="none" stroke="#f3d08a" stroke-width="1.5"/><path d="M14 51h18l-3 6H17Z" fill="#a8702e"/></svg></div>`;
+  return `<div id="shl" role="dialog" aria-label="Shri Ganesh Vandana">
+  <div class="halo"></div><div class="rays"></div>
+  <svg class="mandala" viewBox="0 0 400 400" aria-hidden="true"><g class="r2" fill="currentColor">${r2}</g><g class="r1" fill="none" stroke="currentColor" stroke-width="1">${r1}<circle cx="200" cy="200" r="150" stroke-dasharray="2 5"/><circle cx="200" cy="200" r="186"/></g></svg>
+  <canvas aria-hidden="true"></canvas>
+  <div class="inner">
+    <svg class="lotus" viewBox="0 0 120 70" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M60 8C70 22 72 38 60 56 48 38 50 22 60 8Z"/><path d="M60 56C64 36 78 26 94 24 92 40 80 52 60 56Z"/><path d="M60 56C56 36 42 26 26 24 28 40 40 52 60 56Z"/>
+      <path d="M60 56C78 46 98 44 114 50 100 60 80 62 60 56Z"/><path d="M60 56C42 46 22 44 6 50 20 60 40 62 60 56Z"/><path d="M30 64H90"/></g><circle cx="60" cy="4" r="2.4" fill="currentColor"/></svg>
+    <div class="title">॥ ${W('श्री गणेशाय नमः')} ॥</div>
+    <svg class="rule" viewBox="0 0 300 18" aria-hidden="true"><path d="M0 9H120M180 9H300M122 9c8-9 20-9 28 0 8 9 20 9 28 0" fill="none" stroke="currentColor"/><circle cx="150" cy="9" r="2.6" fill="currentColor"/></svg>
+    <div class="verse"><span class="ln">${W('वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।')}</span><span class="ln">${W('निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥')}</span></div>
+    <button class="begin" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Begin with blessings</button>
+  </div>
+  <div class="diyas">${diya}${diya}</div>
+  <button class="skip" type="button">Skip</button><div class="prog"></div>
+</div>`;
+}
+
 /* ---------- page ---------- */
 function page(t) {
   const [script, display] = t.fonts;
@@ -249,7 +277,7 @@ function page(t) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${fontsHref([script, display])}">
-<link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/theme.css">${t.shloka ? '\n<link rel="stylesheet" href="../assets/shloka.css">' : ''}
 <style>${css}</style>
 </head>
 <body class="locked${t.dark ? ' dark' : ''}">
@@ -258,7 +286,7 @@ ${DEFS}
 <audio id="bgm" src="../assets/shubh-aarambh.mp3" loop preload="auto"></audio>
 <button id="music" aria-label="Mute music" hidden><span class="bars"><i></i><i></i><i></i><i></i></span></button>
 
-${opening(t)}
+${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
 
 <header class="stage">
   ${scene(t, 'h')}
@@ -291,7 +319,7 @@ ${opening(t)}
     ${divider}
     <div class="scratch st" id="scratch" style="--d:2">
       <svg class="under" viewBox="0 0 300 276" aria-hidden="true"><path d="M150 262C60 196 8 150 8 86 8 40 44 10 86 10c28 0 50 16 64 40 14-24 36-40 64-40 42 0 78 30 78 76 0 64-52 110-142 176Z" style="fill:var(--paper);stroke:var(--accent)" stroke-width="2"/></svg>
-      <div class="msg"><div class="a">You're Invited!</div><div class="b">December 18, 2026</div><div class="c">Friday</div><div class="c">9:00 PM · Agra</div></div>
+      <div class="msg"><div class="a">You're Invited!</div><div class="b">December 18, 2026</div><div class="c">Friday</div><div class="c">${t.scratchTime || '9:00 PM · Agra'}</div></div>
       <canvas id="scratchCanvas" role="img" aria-label="Scratch the heart to reveal the wedding date"></canvas>
     </div>
     <div class="hint" id="scratchHint">Scratch the heart with your finger</div>
@@ -316,7 +344,7 @@ ${opening(t)}
     <div class="date-h st" style="--d:2">Friday, 18 December 2026</div>
     <div class="tl">
       <div class="ev st" style="--d:3"><div class="t">4:00 PM</div><div class="w">Tilak &amp; Ghudchadi</div><div class="s">Hotel Atithi · we welcome you</div></div>
-      <div class="ev st" style="--d:4"><div class="t">7:00 PM</div><div class="w">Baraat Prasthan</div><div class="s">From Hotel Atithi · dance along!</div></div>
+      <div class="ev st" style="--d:4"><div class="t">${t.baraatTime || '7:00 PM'}</div><div class="w">${t.baraatName || 'Baraat Prasthan'}</div><div class="s">From Hotel Atithi · dance along!</div></div>
       <div class="ev st" style="--d:5"><div class="t">9:00 PM onwards</div><div class="w">Shubh Vivah</div><div class="s">The Ramana Grand · your presence means a lot</div></div>
     </div>
   </section>
@@ -359,7 +387,7 @@ ${opening(t)}
 <footer>Sanchit &amp; Muskan<small>18 · 12 · 2026 · AGRA</small></footer>
 
 <script>window.THEME=${JSON.stringify(cfg)}</script>
-<script src="../assets/theme.js"></script>
+<script src="../assets/theme.js"></script>${t.shloka ? '\n<script src="../assets/shloka.js"></script>' : ''}
 </body>
 </html>
 `;
