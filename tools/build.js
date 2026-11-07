@@ -3,6 +3,7 @@
 const fs = require('fs'), path = require('path');
 const ROOT = path.join(__dirname, '..');
 const THEMES = require('./themes');
+const V = f => require('crypto').createHash('md5').update(fs.readFileSync(path.join(ROOT, 'assets', f))).digest('hex').slice(0, 8);
 
 /* ---------- helpers ---------- */
 let seed = 1;
@@ -274,7 +275,7 @@ function page(t) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${fontsHref([script, display])}">
-<link rel="stylesheet" href="../assets/theme.css">${t.shloka ? '\n<link rel="stylesheet" href="../assets/shloka.css">' : ''}
+<link rel="stylesheet" href="../assets/theme.css?v=${V('theme.css')}">${t.shloka ? '\n<link rel="stylesheet" href="../assets/shloka.css?v=' + V('shloka.css') + '">' : ''}
 <style>${css}${t.noMusicBtn ? '#music{display:none!important}' : ''}</style>
 </head>
 <body class="locked${t.dark ? ' dark' : ''}">
@@ -384,7 +385,7 @@ ${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
 <footer>Sanchit &amp; Muskan<small>18 · 12 · 2026 · AGRA</small></footer>
 
 <script>window.THEME=${JSON.stringify(cfg)}</script>
-<script src="../assets/theme.js"></script>${t.shloka ? '\n<script src="../assets/shloka.js"></script>' : ''}
+<script src="../assets/theme.js?v=${V('theme.js')}"></script>${t.shloka ? '\n<script src="../assets/shloka.js?v=' + V('shloka.js') + '"></script>' : ''}
 </body>
 </html>
 `;
