@@ -19,6 +19,9 @@ const D = { // dark base
 const gold = { m: '#c9a45e', 'm-hi': '#f3dea8', 'm-lo': '#8d6a2f', 'm-ink': '#fff6df', 'm-line': 'rgba(255,246,223,.75)' };
 const goldDarkInk = { m: '#d4b06a', 'm-hi': '#fbe7b4', 'm-lo': '#94702f', 'm-ink': '#4a3412', 'm-line': 'rgba(74,52,18,.5)' };
 
+// Event details and layout shared by every theme
+const COMMON = { noMusicBtn: true, shlokaHero: true, inviteCard: true, ringName: 'The Yes Moment', ringTime: '7:00 PM', scratchTime: '8:00 PM onwards', baraatName: 'Baraat Nikasi', baraatTime: '6:00 PM', baraatPlace: 'Near The Ramana Grand', vivahName: 'Preeti Bhoj', vivahTime: '8:00 PM onwards' };
+
 module.exports = [
   { slug: 'imperial', name: 'Royal Imperial', blurb: 'Rose-gold filigree gates open onto a palace at golden hour',
     open: 'gates', scene: 'palace', fx: ['petals', 'sparkles'], fonts: ['Great Vibes', 'Playfair Display'],
@@ -101,7 +104,7 @@ module.exports = [
     petal: '#e9d9b0', spark: '#f2cf7e', burst: ['#d4b06a', '#fff2cf', '#ffffff'], scratch: ['#f6e7c0', '#d4b06a', '#8d6a2f'] },
 
   { slug: 'violet', name: 'Royal Violet', blurb: 'A pearlescent lavender envelope with a pearl charm seal',
-    open: 'envelope', scene: 'garden', fx: ['petals', 'sparkles'], fonts: ['Allura', 'Playfair Display'], noMusicBtn: true, shlokaHero: true, inviteCard: true, ringName: 'The Yes Moment', ringTime: '7:00 PM', scratchTime: '8:00 PM onwards', baraatName: 'Baraat Nikasi', baraatTime: '6:00 PM', baraatPlace: 'Near The Ramana Grand', vivahName: 'Preeti Bhoj', vivahTime: '8:00 PM onwards',
+    open: 'envelope', scene: 'garden', fx: ['petals', 'sparkles'], fonts: ['Allura', 'Playfair Display'],
     v: { ...L, bg: '#f7f4fa', ink: '#4a3f58', muted: '#86799a', head: '#5e4a7d', accent: '#a98ec8', 'accent-deep': '#7a5fa0', btn: '#6e568f', line: 'rgba(160,135,195,.35)', name1: '#5e4a7d', name2: '#e6d8f6',
       'hero-accent': '#7a5fa0', 'hero-ink': '#5e4a7d', paper: '#fdfbff', 'paper-ink': '#5e4a7d',
       'o-bg': 'radial-gradient(circle at 50% 40%,#efe7f7,#cfc0e4)', o1: '#d8c9ec', o2: '#c6b3e0', 'o-line': '#ffffff', 'o-ink': '#5e4a7d', 'o-shadow': 'rgba(255,255,255,.8)',
@@ -180,4 +183,4 @@ module.exports = [
       'o-bg': '#2a2010', o1: '#a88350', o2: '#d8bb86', 'o-line': '#fff0c9', ...gold,
       sky1: '#f6e3c2', sky2: '#fdf8ee', sun: '#fff6dd', pal: '#f3e8d2', win: '#ffd88e', water1: '#efdcbc', water2: '#faf1e2', fl1: '#ffffff', fl2: '#f4e4c4', 'fl-c': '#e1bd6e', leaf: '#a9ae88' },
     petal: '#ffffff', spark: '#f3d491', scratch: ['#f6e9cc', '#d8bb86', '#8c6a35'] }
-];
+].map(t => ({ ...COMMON, ...t }));
