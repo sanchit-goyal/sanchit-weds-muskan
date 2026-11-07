@@ -221,6 +221,7 @@ a{color:inherit}
 .stage .veil{position:absolute;inset:0;z-index:1;background:var(--hero-veil)}
 .hero{position:relative;z-index:3;text-align:center;padding:12vh 26px 16vh;max-width:560px;color:var(--hero-ink)}
 .hero .ganesh{font-family:"Tiro Devanagari Hindi",serif;font-size:17px;color:var(--hero-accent);letter-spacing:.04em}
+.hero .ganesh-verse{font-family:"Tiro Devanagari Hindi",serif;font-size:15px;line-height:1.75;color:var(--hero-ink);opacity:.9;margin-top:6px}
 .hero .kicker{font-size:13px;letter-spacing:.42em;text-transform:uppercase;margin-top:14px;color:var(--hero-accent)}
 .hero .name{font-family:var(--script);font-weight:400;font-size:clamp(62px,19vw,104px);line-height:1;margin:.05em 0 0;
   background:linear-gradient(100deg,var(--name1) 0%,var(--name1) 38%,var(--name2) 50%,var(--name1) 62%,var(--name1) 100%);background-size:250% 100%;
@@ -277,6 +278,12 @@ main::before{content:"";position:absolute;inset:0;background:var(--bg-tex,none);
 .sec p{margin:0 auto 12px;max-width:420px}
 .deva{font-family:"Tiro Devanagari Hindi",serif;color:var(--accent);font-size:20px}
 .deva small{display:block;font-size:15px;color:var(--muted);margin-top:8px;line-height:1.7}
+.inv .inv-h{font-family:var(--display);font-size:clamp(17px,4.8vw,21px);line-height:1.5;color:var(--head);text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.inv .inv-n{font-family:var(--display);font-size:clamp(15px,4.2vw,18px);color:var(--accent-deep);margin-top:6px;line-height:1.4}
+.inv .inv-p{font-family:var(--display);font-size:clamp(17px,4.8vw,21px);color:var(--head)}
+.inv .inv-i{font-style:italic;color:var(--muted);font-size:17px;line-height:1.45;margin:6px 0 10px}
+.inv .inv-s{font-family:var(--script);font-size:clamp(54px,15vw,72px);line-height:1.05;color:var(--head)}
+.inv .inv-w{font-family:var(--script);font-size:30px;color:var(--accent);line-height:1}
 .memory{font-style:italic;color:var(--muted);font-size:17px}
 .big{font-family:var(--display);font-size:22px;color:var(--head)}
 .sig{font-family:var(--script);font-size:46px;color:var(--accent);line-height:1.2;margin-top:6px}
