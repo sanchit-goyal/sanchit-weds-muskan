@@ -344,7 +344,7 @@ ${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
     <div class="date-h st" style="--d:2">Friday, 18 December 2026</div>
     <div class="tl">
       <div class="ev st" style="--d:3"><div class="t">4:00 PM</div><div class="w">Tilak &amp; Ghudchadi</div><div class="s">Hotel Atithi · we welcome you</div></div>
-      <div class="ev st" style="--d:4"><div class="t">${t.baraatTime || '7:00 PM'}</div><div class="w">${t.baraatName || 'Baraat Prasthan'}</div><div class="s">From Hotel Atithi · dance along!</div></div>
+      <div class="ev st" style="--d:4"><div class="t">${t.baraatTime || '7:00 PM'}</div><div class="w">${t.baraatName || 'Baraat Prasthan'}</div><div class="s">${t.baraatPlace || 'From Hotel Atithi'} · dance along!</div></div>
       <div class="ev st" style="--d:5"><div class="t">${t.vivahTime || '9:00 PM onwards'}</div><div class="w">${t.vivahName || 'Shubh Vivah'}</div><div class="s">The Ramana Grand · your presence means a lot</div></div>
     </div>
   </section>
@@ -366,12 +366,12 @@ ${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
     <h2 class="h st" style="--d:1">Venue</h2>
     ${divider}
     <div class="venue st" style="--d:2">
-      <h3>The Ramana Grand</h3><p>Agra · ${t.vivahName || 'Shubh Vivah'}</p>
+      <h3>The Ramana Grand</h3><p>Agra · ${t.baraatPlace ? (t.baraatName || 'Baraat') + ' &amp; ' : ''}${t.vivahName || 'Shubh Vivah'}</p>
       <div class="map"><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=The+Ramana+Grand+Agra">Open in Maps ↗</a>
         <iframe loading="lazy" title="Map of The Ramana Grand, Agra" src="https://maps.google.com/maps?q=The%20Ramana%20Grand%2C%20Agra&amp;z=15&amp;output=embed"></iframe></div>
     </div>
     <div class="venue st" style="--d:3">
-      <h3>Hotel Atithi</h3><p>Agra · Pre-wedding functions, Tilak &amp; Baraat</p>
+      <h3>Hotel Atithi</h3><p>Agra · ${t.baraatPlace ? 'Pre-wedding functions &amp; Tilak' : 'Pre-wedding functions, Tilak &amp; Baraat'}</p>
       <div class="map"><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Atithi+Agra">Open in Maps ↗</a>
         <iframe loading="lazy" title="Map of Hotel Atithi, Agra" src="https://maps.google.com/maps?q=Hotel%20Atithi%2C%20Agra&amp;z=15&amp;output=embed"></iframe></div>
     </div>
