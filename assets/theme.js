@@ -99,17 +99,26 @@
     book: [2500, 2700, 3700, 2250], card: [1900, 2400, 3300, 1650]
   }[T.open] || [1200, 2200, 3000];
   var opened = false;
+  function startMusic() {
+    if (bgm) bgm.play().then(function () { mbtn.hidden = false; mbtn.classList.remove('muted'); }).catch(function () { mbtn.hidden = false; mbtn.classList.add('muted'); });
+  }
+  function revealHero() {
+    body.classList.add('opened'); body.classList.remove('locked');
+    burst(innerWidth / 2, innerHeight * .4, 140, true);
+  }
   function openIt() {
     if (opened) return; opened = true;
     op.classList.add('open');
-    if (bgm) bgm.play().then(function () { mbtn.hidden = false; }).catch(function () { mbtn.hidden = false; mbtn.classList.add('muted'); });
+    var sh = window.Shloka;
+    if (sh) { sh.unlock(); if (bgm) bgm.play().then(function () { bgm.pause(); bgm.currentTime = 0; }).catch(function () {}); }
+    else startMusic();
     if (navigator.vibrate) try { navigator.vibrate(12); } catch (e) {}
     var k = reduce ? 0 : 1;
     if (seq[3]) setTimeout(function () { op.classList.add('zoom'); }, seq[3] * k);
     if (/doors|arch|curtains|bow|glass/.test(T.open)) setTimeout(function () { op.style.transition = 'background-color 1.2s'; op.style.backgroundColor = 'transparent'; op.style.background = 'transparent'; }, 500 * k);
     setTimeout(function () {
-      body.classList.add('opened'); body.classList.remove('locked');
-      burst(innerWidth / 2, innerHeight * .4, 140, true);
+      if (sh) sh.begin(function () { revealHero(); startMusic(); });
+      else revealHero();
     }, seq[0] * k);
     setTimeout(function () { op.classList.add('fade'); }, seq[1] * k);
     setTimeout(function () { op.classList.add('gone'); }, seq[2] * k);

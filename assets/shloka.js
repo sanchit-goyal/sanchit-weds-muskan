@@ -2,7 +2,7 @@
 (function () {
   var MARKS = [{"w": "श्री", "t0": 2.6, "t1": 3.25}, {"w": "गणेशाय", "t0": 3.5, "t1": 4.71}, {"w": "नमः", "t0": 4.86, "t1": 5.56}, {"w": "वक्रतुण्ड", "t0": 6.66, "t1": 7.77}, {"w": "महाकाय", "t0": 7.89, "t1": 9.14}, {"w": "सूर्यकोटि", "t0": 9.69, "t1": 11.07}, {"w": "समप्रभ", "t0": 11.19, "t1": 12.2}, {"w": "निर्विघ्नं", "t0": 13.2, "t1": 14.27}, {"w": "कुरु", "t0": 14.39, "t1": 15.0}, {"w": "मे", "t0": 15.05, "t1": 15.66}, {"w": "देव", "t0": 15.71, "t1": 16.38}, {"w": "सर्वकार्येषु", "t0": 16.93, "t1": 18.73}, {"w": "सर्वदा", "t0": 18.85, "t1": 19.95}], TOTAL = 25.26;
   var el = document.getElementById('shl'); if (!el) return;
-  var words = el.querySelectorAll('.w'), au = new Audio('../assets/shloka.mp3'), btn = el.querySelector('.begin'), skip = el.querySelector('.skip'), prog = el.querySelector('.prog');
+  var words = el.querySelectorAll('.w'), au = new Audio('../assets/shloka.mp3'), skip = el.querySelector('.skip'), prog = el.querySelector('.prog');
   au.preload = 'auto';
   var cv = el.querySelector('canvas'), g = cv.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2), W, H, parts = [], live = true;
   function size() { W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); }
@@ -38,14 +38,19 @@
     if (finished) return; finished = true; cancelAnimationFrame(raf);
     words.forEach(function (w) { w.classList.remove('on'); w.classList.add('done'); });
     var v = useAudio ? au.volume : 0, f = setInterval(function () { v = Math.max(0, v - .06); au.volume = v; if (!v) { clearInterval(f); au.pause(); } }, 90);
-    setTimeout(function () { el.classList.add('out'); }, 500);
+    setTimeout(function () { el.classList.add('out'); if (done_cb) done_cb(); }, 500);
     setTimeout(function () { el.classList.add('gone'); live = false; }, 2100);
   }
-  btn.addEventListener('click', function () {
-    el.classList.add('playing');
-    au.play().then(function () { raf = requestAnimationFrame(sync); }).catch(function () {
-      useAudio = false; clock0 = performance.now(); raf = requestAnimationFrame(sync);
-    });
-  });
+  var done_cb = null, unlocked = false;
+  window.Shloka = {
+    unlock: function () { if (unlocked) return; unlocked = true; var p = au.play(); if (p) p.then(function () { au.pause(); au.currentTime = 0; }).catch(function () {}); },
+    begin: function (cb) {
+      done_cb = cb; el.classList.add('show', 'playing');
+      au.currentTime = 0;
+      au.play().then(function () { raf = requestAnimationFrame(sync); }).catch(function () {
+        useAudio = false; clock0 = performance.now(); raf = requestAnimationFrame(sync);
+      });
+    }
+  };
   skip.addEventListener('click', finish);
 })();

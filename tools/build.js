@@ -244,7 +244,7 @@ function shlokaIntro() {
     <div class="title">॥ ${W('श्री गणेशाय नमः')} ॥</div>
     <svg class="rule" viewBox="0 0 300 18" aria-hidden="true"><path d="M0 9H120M180 9H300M122 9c8-9 20-9 28 0 8 9 20 9 28 0" fill="none" stroke="currentColor"/><circle cx="150" cy="9" r="2.6" fill="currentColor"/></svg>
     <div class="verse"><span class="ln">${W('वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।')}</span><span class="ln">${W('निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥')}</span></div>
-    <button class="begin" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Begin with blessings</button>
+    
   </div>
   <div class="diyas">${diya}${diya}</div>
   <button class="skip" type="button">Skip</button><div class="prog"></div>
@@ -278,7 +278,7 @@ function page(t) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${fontsHref([script, display])}">
 <link rel="stylesheet" href="../assets/theme.css">${t.shloka ? '\n<link rel="stylesheet" href="../assets/shloka.css">' : ''}
-<style>${css}</style>
+<style>${css}${t.noMusicBtn ? '#music{display:none!important}' : ''}</style>
 </head>
 <body class="locked${t.dark ? ' dark' : ''}">
 ${DEFS}

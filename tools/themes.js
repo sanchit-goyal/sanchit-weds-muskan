@@ -101,7 +101,7 @@ module.exports = [
     petal: '#e9d9b0', spark: '#f2cf7e', burst: ['#d4b06a', '#fff2cf', '#ffffff'], scratch: ['#f6e7c0', '#d4b06a', '#8d6a2f'] },
 
   { slug: 'violet', name: 'Royal Violet', blurb: 'A pearlescent lavender envelope with a pearl charm seal',
-    open: 'envelope', scene: 'garden', fx: ['petals', 'sparkles'], fonts: ['Allura', 'Playfair Display'], shloka: true, scratchTime: '8:00 PM onwards', baraatName: 'Baraat Nikasi', baraatTime: '6:00 PM', baraatPlace: 'Near The Ramana Grand', vivahName: 'Preeti Bhoj', vivahTime: '8:00 PM onwards',
+    open: 'envelope', scene: 'garden', fx: ['petals', 'sparkles'], fonts: ['Allura', 'Playfair Display'], shloka: true, noMusicBtn: true, scratchTime: '8:00 PM onwards', baraatName: 'Baraat Nikasi', baraatTime: '6:00 PM', baraatPlace: 'Near The Ramana Grand', vivahName: 'Preeti Bhoj', vivahTime: '8:00 PM onwards',
     v: { ...L, bg: '#f7f4fa', ink: '#4a3f58', muted: '#86799a', head: '#5e4a7d', accent: '#a98ec8', 'accent-deep': '#7a5fa0', btn: '#6e568f', line: 'rgba(160,135,195,.35)', name1: '#5e4a7d', name2: '#e6d8f6',
       'hero-accent': '#7a5fa0', 'hero-ink': '#5e4a7d', paper: '#fdfbff', 'paper-ink': '#5e4a7d',
       'o-bg': 'radial-gradient(circle at 50% 40%,#efe7f7,#cfc0e4)', o1: '#d8c9ec', o2: '#c6b3e0', 'o-line': '#ffffff', 'o-ink': '#5e4a7d', 'o-shadow': 'rgba(255,255,255,.8)',

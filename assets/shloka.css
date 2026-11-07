@@ -1,5 +1,5 @@
 /* Ganesh vandana intro: shown before anything else, chanted shloka with word-by-word glow */
-#shl{position:fixed;inset:0;z-index:80;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;
+#shl{position:fixed;inset:0;z-index:45;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;
   background:radial-gradient(ellipse 90% 70% at 50% 42%,var(--shl-1,#4b2f6e) 0%,var(--shl-2,#2a1740) 55%,var(--shl-3,#140a22) 100%);color:#f7ecd2;
   transition:opacity 1.4s ease,transform 1.6s cubic-bezier(.6,0,.2,1);padding:0 20px}
 #shl.out{opacity:0;transform:scale(1.08);pointer-events:none}
@@ -48,3 +48,5 @@
 #shl.playing .skip{opacity:1}
 #shl .prog{position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,transparent,#efcf86);z-index:3;transition:width .25s linear}
 @media (prefers-reduced-motion:reduce){#shl *{animation:none!important;opacity:1!important;transform:none!important}}
+
+#shl:not(.show) *{animation-play-state:paused!important}
