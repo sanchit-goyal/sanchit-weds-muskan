@@ -38,7 +38,7 @@
     if (finished) return; finished = true; cancelAnimationFrame(raf);
     words.forEach(function (w) { w.classList.remove('on'); w.classList.add('done'); });
     var v = useAudio ? au.volume : 0, f = setInterval(function () { v = Math.max(0, v - .06); au.volume = v; if (!v) { clearInterval(f); au.pause(); } }, 90);
-    setTimeout(function () { el.classList.add('out'); if (done_cb) done_cb(); }, 500);
+    setTimeout(function () { el.classList.add('out'); if (done_cb) done_cb(); else { document.body.classList.add('opened'); document.body.classList.remove('locked'); } }, 500);
     setTimeout(function () { el.classList.add('gone'); live = false; }, 2100);
   }
   var done_cb = null, unlocked = false;
@@ -53,4 +53,5 @@
     }
   };
   skip.addEventListener('click', finish);
+  el.addEventListener('click', function (e) { if (!el.classList.contains('playing') && e.target !== skip) finish(); });
 })();
