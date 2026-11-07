@@ -284,6 +284,7 @@ main::before{content:"";position:absolute;inset:0;background:var(--bg-tex,none);
 .inv .inv-i{font-style:italic;color:var(--muted);font-size:17px;line-height:1.45;margin:6px 0 10px}
 .inv .inv-s{font-family:var(--script);font-size:clamp(54px,15vw,72px);line-height:1.05;color:var(--head)}
 .inv .inv-w{font-family:var(--script);font-size:30px;color:var(--accent);line-height:1}
+.inv .fit{white-space:nowrap;margin-left:-14px;margin-right:-14px}
 .memory{font-style:italic;color:var(--muted);font-size:17px}
 .big{font-family:var(--display);font-size:22px;color:var(--head)}
 .sig{font-family:var(--script);font-size:46px;color:var(--accent);line-height:1.2;margin-top:6px}

@@ -186,6 +186,16 @@
     var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { if (!done) paint(); }, 200); });
   }
 
+  /* ---------- keep each couple's names on one line: shrink to fit ---------- */
+  function fitLines() {
+    document.querySelectorAll('.fit').forEach(function (el) {
+      el.style.fontSize = ''; var fs = parseFloat(getComputedStyle(el).fontSize), w = el.clientWidth;
+      while (el.scrollWidth > w && fs > 9) { fs -= .5; el.style.fontSize = fs + 'px'; }
+    });
+  }
+  fitLines(); (document.fonts ? document.fonts.ready : Promise.resolve()).then(fitLines);
+  var ft; addEventListener('resize', function () { clearTimeout(ft); ft = setTimeout(fitLines, 150); });
+
   /* ---------- countdown: 18 Dec 2026, 9:00 PM IST ---------- */
   var target = T.target || Date.UTC(2026, 11, 18, 15, 30, 0), ids = ['cd-d', 'cd-h', 'cd-m', 'cd-s'];
   function pad(n) { return n < 10 ? '0' + n : '' + n; }

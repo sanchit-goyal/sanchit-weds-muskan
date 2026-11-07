@@ -309,14 +309,14 @@ ${t.shlokaHero ? '' : `    <div class="deva st" style="--d:0">॥ श्री �
 `}${t.inviteCard ? `
     <div class="inv">
       <div class="inv-h st" style="--d:0">With the Heavenly Blessings<br>of Grandparents</div>
-      <div class="inv-n st" style="--d:1">Late Smt. Sarla Devi &amp;<br>Late Shri Roop Kishore Goyal</div>
+      <div class="inv-n fit st" style="--d:1">Late Smt. Sarla Devi &amp; Late Shri Roop Kishore Goyal</div>
       ${divider}
-      <div class="inv-p st" style="--d:2">Smt. Seema Goyal &amp;<br>Shri Sanjay Goyal</div>
+      <div class="inv-p fit st" style="--d:2">Smt. Seema Goyal &amp; Shri Sanjay Goyal</div>
       <div class="inv-i st" style="--d:3">We cordially invite you to the sacred occasion<br>of the wedding celebrations of our beloved son</div>
       <div class="inv-s st" style="--d:4">Sanchit</div>
       <div class="inv-w st" style="--d:5">with</div>
       <div class="inv-s st" style="--d:6">Muskan</div>
-      <div class="inv-n st" style="--d:7">D/o Smt. Anjali Jain &amp; Late Shri Atul Jain</div>
+      <div class="inv-n fit st" style="--d:7">D/o Smt. Anjali Jain &amp; Late Shri Atul Jain</div>
     </div>` : `
     <p class="memory st" style="--d:1">In loving memory of<br>Late Smt. Sarla Devi &amp; Late Shri Roop Kishore Goyal</p>
     <p class="st" style="--d:2">With the blessings of our elders, we are honoured to welcome you to the wedding of <b>Sanchit</b> &amp; <b>Muskan</b>, as they begin their journey together in faith and love.</p>
