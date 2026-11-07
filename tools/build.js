@@ -238,9 +238,6 @@ function shlokaIntro() {
   <svg class="mandala" viewBox="0 0 400 400" aria-hidden="true"><g class="r2" fill="currentColor">${r2}</g><g class="r1" fill="none" stroke="currentColor" stroke-width="1">${r1}<circle cx="200" cy="200" r="150" stroke-dasharray="2 5"/><circle cx="200" cy="200" r="186"/></g></svg>
   <canvas aria-hidden="true"></canvas>
   <div class="inner">
-    <svg class="lotus" viewBox="0 0 120 70" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
-      <path d="M60 8C70 22 72 38 60 56 48 38 50 22 60 8Z"/><path d="M60 56C64 36 78 26 94 24 92 40 80 52 60 56Z"/><path d="M60 56C56 36 42 26 26 24 28 40 40 52 60 56Z"/>
-      <path d="M60 56C78 46 98 44 114 50 100 60 80 62 60 56Z"/><path d="M60 56C42 46 22 44 6 50 20 60 40 62 60 56Z"/><path d="M30 64H90"/></g><circle cx="60" cy="4" r="2.4" fill="currentColor"/></svg>
     <div class="title">॥ ${W('श्री गणेशाय नमः')} ॥</div>
     <svg class="rule" viewBox="0 0 300 18" aria-hidden="true"><path d="M0 9H120M180 9H300M122 9c8-9 20-9 28 0 8 9 20 9 28 0" fill="none" stroke="currentColor"/><circle cx="150" cy="9" r="2.6" fill="currentColor"/></svg>
     <div class="verse"><span class="ln">${W('वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।')}</span><span class="ln">${W('निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥')}</span></div>
