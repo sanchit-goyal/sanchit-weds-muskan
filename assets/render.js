@@ -37,7 +37,7 @@ window.InviteRender = async function (opts) {
   const types = ['video/mp4;codecs=avc1.640028,mp4a.40.2', 'video/mp4;codecs=avc1,mp4a.40.2', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm'];
   const mime = types.find(t => MediaRecorder.isTypeSupported(t));
   log('mime ' + mime);
-  const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 12e6, audioBitsPerSecond: 192e3 });
+  const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: opts.vbr || 12e6, audioBitsPerSecond: 192e3 });
   const chunks = []; rec.ondataavailable = e => e.data.size && chunks.push(e.data);
 
   // ---- sparkles ----
