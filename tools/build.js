@@ -280,7 +280,7 @@ ${opening(t)}
   <section class="sec rv">${corners}
     <div class="deva st" style="--d:0">॥ श्री गणेशाय नमः ॥<small>वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥</small></div>
     ${divider}
-    <p class="memory st" style="--d:1">In loving memory of<br>Late Shri Roop Kishore Goyal &amp; Late Smt. Sarla Devi</p>
+    <p class="memory st" style="--d:1">In loving memory of<br>Late Smt. Sarla Devi &amp; Late Shri Roop Kishore Goyal</p>
     <p class="st" style="--d:2">With the blessings of our elders, we are honoured to welcome you to the wedding of <b>Sanchit</b> &amp; <b>Muskan</b>, as they begin their journey together in faith and love.</p>
     <p class="st" style="--d:3">We thank you for being part of this blessed occasion.</p>
   </section>
