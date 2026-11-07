@@ -354,7 +354,7 @@ ${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
     <h2 class="h st" style="--d:1">Pre-Wedding Events</h2>
     ${divider}
     <div class="date-h st" style="--d:2">Wednesday, 16 December</div>
-    <div class="tl"><div class="ev st" style="--d:3"><div class="t">8:00 PM</div><div class="w">Ring Ceremony &amp; Sangeet</div><div class="s">Hotel Atithi, Agra</div></div></div>
+    <div class="tl"><div class="ev st" style="--d:3"><div class="t">${t.ringTime || '8:00 PM'}</div><div class="w">${t.ringName || 'Ring Ceremony &amp; Sangeet'}</div><div class="s">Hotel Atithi, Agra</div></div></div>
     <div class="date-h st" style="--d:4">Thursday, 17 December</div>
     <div class="tl"><div class="ev st" style="--d:5"><div class="t">4:00 PM</div><div class="w">Mehendi</div><div class="s">Hotel Atithi, Agra</div></div></div>
     <div class="date-h st" style="--d:6">Friday, 18 December</div>
