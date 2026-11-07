@@ -178,7 +178,7 @@
   }
 
   /* ---------- countdown: 18 Dec 2026, 9:00 PM IST ---------- */
-  var target = Date.UTC(2026, 11, 18, 15, 30, 0), ids = ['cd-d', 'cd-h', 'cd-m', 'cd-s'];
+  var target = T.target || Date.UTC(2026, 11, 18, 15, 30, 0), ids = ['cd-d', 'cd-h', 'cd-m', 'cd-s'];
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
   function tick() {
     var d = Math.max(0, target - Date.now());

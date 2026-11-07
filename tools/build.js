@@ -261,7 +261,7 @@ function page(t) {
   if (!v['o-bg']) v['o-bg'] = v.o2;
   v.script = `"${t.script || script}",cursive`; v.display = `"${display}",serif`; v.serif = '"Cormorant Garamond",Georgia,serif';
   const css = ':root{' + Object.entries(v).map(([k, x]) => `--${k}:${x}`).join(';') + '}';
-  const cfg = { open: t.open, fx: t.fx, petal: t.petal, spark: t.spark, burst: t.burst, scratch: t.scratch };
+  const cfg = { target: t.vivahTime ? Date.UTC(2026, 11, 18, 14, 30) : undefined, open: t.open, fx: t.fx, petal: t.petal, spark: t.spark, burst: t.burst, scratch: t.scratch };
   const themeColor = (v['o-bg'].match(/#[0-9a-f]{6}/i) || [v.bg])[0];
 
   return `<!doctype html>
@@ -323,7 +323,7 @@ ${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
       <canvas id="scratchCanvas" role="img" aria-label="Scratch the heart to reveal the wedding date"></canvas>
     </div>
     <div class="hint" id="scratchHint">Scratch the heart with your finger</div>
-    <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Sanchit%20%26%20Muskan%20%E2%80%93%20Wedding&amp;dates=20261218T210000/20261219T010000&amp;ctz=Asia/Kolkata&amp;location=The%20Ramana%20Grand%2C%20Agra&amp;details=Shubh%20Vivah%20of%20Sanchit%20Goyal%20%26%20Muskan%20Agarwal">
+    <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Sanchit%20%26%20Muskan%20%E2%80%93%20Wedding&amp;dates=20261218T${t.vivahTime ? '200000' : '210000'}/20261219T010000&amp;ctz=Asia/Kolkata&amp;location=The%20Ramana%20Grand%2C%20Agra&amp;details=Shubh%20Vivah%20of%20Sanchit%20Goyal%20%26%20Muskan%20Agarwal">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Save the date</a>
   </section>
 
@@ -345,7 +345,7 @@ ${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
     <div class="tl">
       <div class="ev st" style="--d:3"><div class="t">4:00 PM</div><div class="w">Tilak &amp; Ghudchadi</div><div class="s">Hotel Atithi · we welcome you</div></div>
       <div class="ev st" style="--d:4"><div class="t">${t.baraatTime || '7:00 PM'}</div><div class="w">${t.baraatName || 'Baraat Prasthan'}</div><div class="s">From Hotel Atithi · dance along!</div></div>
-      <div class="ev st" style="--d:5"><div class="t">9:00 PM onwards</div><div class="w">Shubh Vivah</div><div class="s">The Ramana Grand · your presence means a lot</div></div>
+      <div class="ev st" style="--d:5"><div class="t">${t.vivahTime || '9:00 PM onwards'}</div><div class="w">${t.vivahName || 'Shubh Vivah'}</div><div class="s">The Ramana Grand · your presence means a lot</div></div>
     </div>
   </section>
 
@@ -366,7 +366,7 @@ ${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
     <h2 class="h st" style="--d:1">Venue</h2>
     ${divider}
     <div class="venue st" style="--d:2">
-      <h3>The Ramana Grand</h3><p>Agra · Shubh Vivah</p>
+      <h3>The Ramana Grand</h3><p>Agra · ${t.vivahName || 'Shubh Vivah'}</p>
       <div class="map"><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=The+Ramana+Grand+Agra">Open in Maps ↗</a>
         <iframe loading="lazy" title="Map of The Ramana Grand, Agra" src="https://maps.google.com/maps?q=The%20Ramana%20Grand%2C%20Agra&amp;z=15&amp;output=embed"></iframe></div>
     </div>
