@@ -315,19 +315,19 @@ ${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
   <div class="veil"></div>
   <div class="hero">
     <div class="ganesh h-in" style="--i:0">॥ श्री गणेशाय नमः ॥</div>${t.shlokaHero ? '\n    <div class="ganesh-verse h-in" style="--i:0.5">वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥</div>' : ''}
-    <div class="kicker h-in" style="--i:1">We're getting married</div>
+    ${t.mergedHero ? '<div class="kicker-inv h-in" style="--i:1">We cordially invite you to the sacred occasion<br>of the wedding celebrations of our beloved son</div>' : '<div class="kicker h-in" style="--i:1">We\'re getting married</div>'}
     <h1 class="name" style="--i:2">Sanchit</h1>
-    <div class="par h-in" style="--i:3">Son of Smt. Seema Goyal &amp; Shri Sanjay Goyal</div>
+    ${t.mergedHero ? '<div class="par fit h-in" style="--i:3">S/o Smt. Seema Goyal &amp; Shri Sanjay Goyal</div>\n    <div class="par fit h-in" style="--i:3">G/S/o Late Smt. Sarla Devi &amp; Late Shri Roop Kishore Goyal</div>' : '<div class="par h-in" style="--i:3">Son of Smt. Seema Goyal &amp; Shri Sanjay Goyal</div>'}
     <div class="amp h-in" style="--i:4">&amp;</div>
     <div class="name" style="--i:5">Muskan</div>
-    <div class="par h-in" style="--i:6">Daughter of Smt. Anjali Jain &amp; Late Shri Atul Jain</div>
+    ${t.mergedHero ? '<div class="par fit h-in" style="--i:6">D/o Smt. Anjali Jain &amp; Late Shri Atul Jain</div>' : '<div class="par h-in" style="--i:6">Daughter of Smt. Anjali Jain &amp; Late Shri Atul Jain</div>'}
     <div class="date h-in" style="--i:7"><i></i>18 · 12 · 2026<i></i></div>
   </div>
   <div class="scroll-cue">SCROLL<i></i></div>
 </header>
 
 <main>
-  <section class="sec rv">${corners}
+${t.mergedHero ? '' : `  <section class="sec rv">${corners}
 ${t.shlokaHero ? '' : `    <div class="deva st" style="--d:0">॥ श्री गणेशाय नमः ॥<small>वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥</small></div>
     ${divider}
 `}${t.inviteCard ? `
@@ -346,7 +346,7 @@ ${t.shlokaHero ? '' : `    <div class="deva st" style="--d:0">॥ श्री �
     <p class="st" style="--d:2">With the blessings of our elders, we are honoured to welcome you to the wedding of <b>Sanchit</b> &amp; <b>Muskan</b>, as they begin their journey together in faith and love.</p>
     <p class="st" style="--d:3">We thank you for being part of this blessed occasion.</p>`}
   </section>
-
+`}
   <section class="sec rv">${corners}
     <div class="eyebrow st">Save the date</div>
     <h2 class="h st" style="--d:1">Scratch to Reveal</h2>
