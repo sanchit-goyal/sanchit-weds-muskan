@@ -254,6 +254,25 @@ function shlokaIntro() {
 /* rich event row: time, small top line, script title, small bottom line, venue */
 const rev = (d, time, top, title, bottom, place) => `<div class="ev rich st" style="--d:${d}"><div class="t">${time}</div>${top ? `<div class="tg">${top}</div>` : ''}<div class="w">${title}</div>${bottom ? `<div class="tg">${bottom}</div>` : ''}<div class="s">${place}</div></div>`;
 
+
+/* fixed floral frame that keeps the garden going down the page (themes with bgFlora) */
+function bgFlora() {
+  seed = 4242;
+  let strands = '';
+  for (let k = 0; k < 4; k++) {
+    const x = 6 + k * 16 + rnd() * 6, len = 5 + Math.floor(rnd() * 5);
+    let g = '';
+    for (let j = 0; j < len; j++) g += `<use href="#bud" x="${(x - 6 + (j % 2) * 4).toFixed(1)}" y="${(j * 13).toFixed(1)}" width="${13 - j * .7}" height="${13 - j * .7}"/>`;
+    strands += `<g class="sway" style="animation-delay:-${k * 1.1}s"><path d="M${x} 0V${len * 13}" stroke="var(--leaf)" stroke-width=".8" opacity=".5"/>${g}</g>`;
+  }
+  const top = `<svg viewBox="0 0 80 140" preserveAspectRatio="xMinYMin meet">${cluster(10, 6, 8, 18, 1.1)}${strands}</svg>`;
+  const bottom = `<svg viewBox="0 0 160 120" preserveAspectRatio="xMinYMax meet">${cluster(18, 112, 14, 40, 1.4)}${cluster(70, 120, 7, 26, 1.1)}</svg>`;
+  return `<div class="bgflora" aria-hidden="true">
+  <div class="bf tl">${top}</div><div class="bf tr">${top}</div>
+  <div class="bf bl">${bottom}</div><div class="bf br">${bottom}</div>
+</div>`;
+}
+
 /* ---------- page ---------- */
 function page(t) {
   const [script, display] = t.fonts;
@@ -283,9 +302,9 @@ function page(t) {
 <link rel="stylesheet" href="../assets/theme.css?v=${V('theme.css')}">${t.shloka ? '\n<link rel="stylesheet" href="../assets/shloka.css?v=' + V('shloka.css') + '">' : ''}
 <style>${css}${t.noMusicBtn ? '#music{display:none!important}' : ''}</style>
 </head>
-<body class="locked${t.dark ? ' dark' : ''}">
+<body class="locked${t.dark ? ' dark' : ''}${t.bgFlora ? ' has-flora' : ''}">
 ${DEFS}
-<canvas id="fx" aria-hidden="true"></canvas><canvas id="burst" aria-hidden="true"></canvas>
+${t.bgFlora ? bgFlora() + '\n' : ''}<canvas id="fx" aria-hidden="true"></canvas><canvas id="burst" aria-hidden="true"></canvas>
 ${t.noMusic ? '' : '<audio id="bgm" src="../assets/shubh-aarambh.mp3" loop preload="auto"></audio>'}
 <button id="music" aria-label="Mute music" hidden><span class="bars"><i></i><i></i><i></i><i></i></span></button>
 
@@ -361,7 +380,7 @@ ${t.events2 ? `  <section class="sec rv">${corners}
     <div class="date-h st" style="--d:4">Thursday, 17 December</div>
     <div class="tl">${rev(5, '4:00 PM', 'Pyaar ka Rang', 'Mehendi', '', 'Hotel Atithi, Agra')}</div>
     <div class="date-h st" style="--d:6">Friday, 18 December</div>
-    <div class="tl">${rev(7, '8:00 AM', 'The Saffron Morning', 'Sunshine Ceremony', 'Haldi · A Splash of Yellow', 'Hotel Atithi, Agra')}</div>
+    <div class="tl">${rev(7, '8:00 AM', 'The Saffron Soirée', 'The Golden Hour', 'A Touch of Sunshine', 'Hotel Atithi, Agra')}</div>
   </section>
 
   <section class="sec rv">${corners}
@@ -372,7 +391,7 @@ ${t.events2 ? `  <section class="sec rv">${corners}
     <div class="tl">
       ${rev(3, '4:00 PM', 'With Blessings &amp; Grace', 'Tilak', '', 'Hotel Atithi, Agra')}
       ${rev(4, '6:00 PM', 'Dhol, Dance &amp; Dhamaal', 'Baraat Prasthan', '', 'Near The Ramana Grand')}
-      ${rev(5, '8:00 PM onwards', '18 December', 'The Beginning of Forever', 'Shubh Vivah &amp; Preeti Bhoj', 'The Ramana Grand, Agra')}
+      ${rev(5, '8:00 PM onwards', '', 'The Beginning of Forever', 'Shubh Vivah &amp; Preeti Bhoj', 'The Ramana Grand, Agra')}
     </div>
   </section>
 

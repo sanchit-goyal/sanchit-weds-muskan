@@ -348,3 +348,15 @@ footer small{display:block;font-family:var(--display);font-size:11px;letter-spac
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
 }
+
+/* fixed floral frame below the hero */
+.bgflora{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
+.bgflora.on{opacity:1}
+.bgflora .bf{position:absolute;width:min(30vw,170px)}
+.bgflora .bf svg{width:100%;height:auto;display:block;overflow:visible}
+.bgflora .tl{left:-6px;top:-4px}.bgflora .tr{right:-6px;top:-4px;transform:scaleX(-1)}
+.bgflora .bl{left:-10px;bottom:-6px}.bgflora .br{right:-10px;bottom:-6px;transform:scaleX(-1)}
+.has-flora main,.has-flora footer{background:transparent}
+.has-flora main::before{display:none}
+.has-flora{background:var(--bg)}
+.has-flora .sec{width:min(86vw,540px)}

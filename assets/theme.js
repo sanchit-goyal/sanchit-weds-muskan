@@ -126,6 +126,10 @@
   tap.addEventListener('click', openIt);
   op.addEventListener('click', function (e) { if (e.target === op || e.target.closest('.leaf,.scene,.bookwrap,.flip,.tapwrap')) openIt(); });
 
+  /* ---------- floral frame appears once the hero scrolls away ---------- */
+  var flora = $('.bgflora');
+  if (flora) { var fl = function () { flora.classList.toggle('on', scrollY > innerHeight * .55); }; addEventListener('scroll', fl, { passive: true }); fl(); }
+
   /* ---------- parallax ---------- */
   var lays = [].slice.call(document.querySelectorAll('.scene .lay[data-depth]')), ticking = false;
   function par() {
