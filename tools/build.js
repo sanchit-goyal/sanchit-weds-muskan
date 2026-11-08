@@ -286,7 +286,7 @@ function page(t) {
 <body class="locked${t.dark ? ' dark' : ''}">
 ${DEFS}
 <canvas id="fx" aria-hidden="true"></canvas><canvas id="burst" aria-hidden="true"></canvas>
-<audio id="bgm" src="../assets/shubh-aarambh.mp3" loop preload="auto"></audio>
+${t.noMusic ? '' : '<audio id="bgm" src="../assets/shubh-aarambh.mp3" loop preload="auto"></audio>'}
 <button id="music" aria-label="Mute music" hidden><span class="bars"><i></i><i></i><i></i><i></i></span></button>
 
 ${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
