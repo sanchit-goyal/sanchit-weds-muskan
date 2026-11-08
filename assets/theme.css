@@ -354,6 +354,7 @@ footer small{display:block;font-family:var(--display);font-size:11px;letter-spac
 .bgflora.on{opacity:1}
 .bgflora .bf{position:absolute;width:min(30vw,170px)}
 .bgflora .bf svg{width:100%;height:auto;display:block;overflow:visible}
+.bgflora .tl,.bgflora .tr{height:50vh;width:auto}.bgflora .tl svg,.bgflora .tr svg{height:100%;width:auto}
 .bgflora .tl{left:-6px;top:-4px}.bgflora .tr{right:-6px;top:-4px;transform:scaleX(-1)}
 .bgflora .bl{left:-10px;bottom:-6px}.bgflora .br{right:-10px;bottom:-6px;transform:scaleX(-1)}
 .has-flora main,.has-flora footer{background:transparent}

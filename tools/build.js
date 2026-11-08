@@ -260,12 +260,12 @@ function bgFlora() {
   seed = 4242;
   let strands = '';
   for (let k = 0; k < 4; k++) {
-    const x = 6 + k * 16 + rnd() * 6, len = 5 + Math.floor(rnd() * 5);
+    const x = 6 + k * 16 + rnd() * 6, len = 12 + Math.floor(rnd() * 9);
     let g = '';
-    for (let j = 0; j < len; j++) g += `<use href="#bud" x="${(x - 6 + (j % 2) * 4).toFixed(1)}" y="${(j * 13).toFixed(1)}" width="${13 - j * .7}" height="${13 - j * .7}"/>`;
+    for (let j = 0; j < len; j++) g += `<use href="#bud" x="${(x - 6 + (j % 2) * 4).toFixed(1)}" y="${(j * 13).toFixed(1)}" width="${Math.max(6, 13 - j * .35)}" height="${Math.max(6, 13 - j * .35)}"/>`;
     strands += `<g class="sway" style="animation-delay:-${k * 1.1}s"><path d="M${x} 0V${len * 13}" stroke="var(--leaf)" stroke-width=".8" opacity=".5"/>${g}</g>`;
   }
-  const top = `<svg viewBox="0 0 80 140" preserveAspectRatio="xMinYMin meet">${cluster(10, 6, 8, 18, 1.1)}${strands}</svg>`;
+  const top = `<svg viewBox="0 0 80 280" preserveAspectRatio="xMinYMin meet">${cluster(10, 6, 8, 18, 1.1)}${strands}</svg>`;
   const bottom = `<svg viewBox="0 0 160 120" preserveAspectRatio="xMinYMax meet">${cluster(18, 112, 14, 40, 1.4)}${cluster(70, 120, 7, 26, 1.1)}</svg>`;
   return `<div class="bgflora" aria-hidden="true">
   <div class="bf tl">${top}</div><div class="bf tr">${top}</div>
@@ -384,14 +384,11 @@ ${t.events2 ? `  <section class="sec rv">${corners}
   </section>
 
   <section class="sec rv">${corners}
-    <div class="eyebrow st">The wedding day</div>
-    <h2 class="h st" style="--d:1">Program Timeline</h2>
     ${divider}
-    <div class="date-h st" style="--d:2">Friday, 18 December 2026</div>
     <div class="tl">
-      ${rev(3, '4:00 PM', 'With Blessings &amp; Grace', 'Tilak', '', 'Hotel Atithi, Agra')}
-      ${rev(4, '6:00 PM', 'Dhol, Dance &amp; Dhamaal', 'Baraat Prasthan', '', 'Near The Ramana Grand')}
-      ${rev(5, '8:00 PM onwards', '', 'The Beginning of Forever', 'Shubh Vivah &amp; Preeti Bhoj', 'The Ramana Grand, Agra')}
+      ${rev(3, '18 Dec · 4:00 PM', 'With Blessings &amp; Grace', 'Tilak', '', 'Hotel Atithi, Agra')}
+      ${rev(4, '18 Dec · 6:00 PM', 'Dhol, Dance &amp; Dhamaal', 'Baraat Prasthan', '', 'Near The Ramana Grand')}
+      ${rev(5, '18 Dec · 8:00 PM onwards', '', 'The Beginning of Forever', 'Shubh Vivah &amp; Preeti Bhoj', 'The Ramana Grand, Agra')}
     </div>
   </section>
 
