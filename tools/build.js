@@ -305,7 +305,7 @@ function page(t, G = 'S', P = '../') {
 <body class="locked${t.dark ? ' dark' : ''}${t.bgFlora ? ' has-flora' : ''}">
 ${DEFS}
 ${t.bgFlora ? bgFlora() + '\n' : ''}<canvas id="fx" aria-hidden="true"></canvas><canvas id="burst" aria-hidden="true"></canvas>
-${t.noMusic ? '' : '<audio id="bgm" src="' + P + 'assets/shubh-aarambh.mp3" loop preload="auto"></audio>'}
+${t.noMusic ? '' : '<audio id="bgm" src="' + P + 'assets/kesariya-flute.mp3" loop preload="auto"></audio>'}
 <button id="music" aria-label="Mute music" hidden><span class="bars"><i></i><i></i><i></i><i></i></span></button>
 
 ${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
