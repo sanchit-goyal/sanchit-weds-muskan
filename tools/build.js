@@ -321,7 +321,7 @@ ${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
     <div class="amp h-in" style="--i:4">&amp;</div>
     <div class="name" style="--i:5">Muskan</div>
     ${t.mergedHero ? '<div class="par fit h-in" style="--i:6">D/o Smt. Anjali Jain &amp; Late Shri Atul Jain</div>' : '<div class="par h-in" style="--i:6">Daughter of Smt. Anjali Jain &amp; Late Shri Atul Jain</div>'}
-    <div class="date h-in" style="--i:7"><i></i>18 · 12 · 2026<i></i></div>
+${t.noHeroDate ? '' : '    <div class="date h-in" style="--i:7"><i></i>18 · 12 · 2026<i></i></div>'}
   </div>
   <div class="scroll-cue">SCROLL<i></i></div>
 </header>
