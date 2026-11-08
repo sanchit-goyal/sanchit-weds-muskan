@@ -384,11 +384,13 @@ ${t.events2 ? `  <section class="sec rv">${corners}
   </section>
 
   <section class="sec rv">${corners}
+    <div class="eyebrow st">Friday · 18 December</div>
+    <h2 class="h st" style="--d:1">Wedding</h2>
     ${divider}
     <div class="tl">
-      ${rev(3, '18 Dec · 4:00 PM', 'With Blessings &amp; Grace', 'Tilak', '', 'Hotel Atithi, Agra')}
-      ${rev(4, '18 Dec · 6:00 PM', 'Dhol, Dance &amp; Dhamaal', 'Baraat Prasthan', '', 'Near The Ramana Grand')}
-      ${rev(5, '18 Dec · 8:00 PM onwards', '', 'The Beginning of Forever', 'Shubh Vivah &amp; Preeti Bhoj', 'The Ramana Grand, Agra')}
+      ${rev(3, '4:00 PM', 'With Blessings &amp; Grace', 'Tilak', '', 'Hotel Atithi, Agra')}
+      ${rev(4, '6:00 PM', 'Dhol, Dance &amp; Dhamaal', 'Baraat Prasthan', '', 'Near The Ramana Grand')}
+      ${rev(5, '8:00 PM onwards', '', 'The Beginning of Forever', 'Shubh Vivah &amp; Preeti Bhoj', 'The Ramana Grand, Agra')}
     </div>
   </section>
 
