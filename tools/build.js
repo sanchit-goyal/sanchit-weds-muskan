@@ -50,7 +50,8 @@ const DEFS = `<svg width="0" height="0" style="position:absolute" aria-hidden="t
 const divider = `<svg class="divider" viewBox="0 0 200 22" aria-hidden="true"><path d="M0 11H78M122 11H200M80 11c6-9 14-9 20 0 6 9 14 9 20 0" fill="none" stroke="currentColor" stroke-width="1.1"/><circle cx="100" cy="11" r="3" fill="currentColor"/></svg>`;
 const corners = ['tl', 'tr', 'bl', 'br'].map(c => `<svg class="corner c-${c}" aria-hidden="true"><use href="#corner"/></svg>`).join('');
 const medal = (wax, extra = '') => `<button id="tap" class="medal${wax ? ' wax' : ''}" aria-label="Tap to open the invitation"${extra}><span class="mono">S<small>&amp;</small>M</span><span class="lbl">Tap to open</span></button>`;
-const tapNames = (hint = true) => `<div class="tap-names"><div class="n">Sanchit &amp; Muskan</div><div class="d">18 · 12 · 2026 · Agra</div>${hint ? '<div class="tap-hint">Tap to open</div>' : ''}</div>`;
+let NO_TAP_NAMES = false;
+const tapNames = (hint = true) => `<div class="tap-names">${NO_TAP_NAMES ? '' : '<div class="n">Sanchit &amp; Muskan</div>'}<div class="d">18 · 12 · 2026 · Agra</div>${hint ? '<div class="tap-hint">Tap to open</div>' : ''}</div>`;
 
 /* floral cluster: blossoms + leaves around (x,y) */
 function cluster(x, y, n, spread, s = 1) {
@@ -146,6 +147,7 @@ function scene(t, P) {
 
 /* ---------- openings ---------- */
 function opening(t) {
+  NO_TAP_NAMES = !!t.noTapNames;
   const o = t.open;
   if (o === 'doors') {
     const orn = t.floralDoors
@@ -249,6 +251,9 @@ function shlokaIntro() {
 </div>`;
 }
 
+/* rich event row: time, small top line, script title, small bottom line, venue */
+const rev = (d, time, top, title, bottom, place) => `<div class="ev rich st" style="--d:${d}"><div class="t">${time}</div>${top ? `<div class="tg">${top}</div>` : ''}<div class="w">${title}</div>${bottom ? `<div class="tg">${bottom}</div>` : ''}<div class="s">${place}</div></div>`;
+
 /* ---------- page ---------- */
 function page(t) {
   const [script, display] = t.fonts;
@@ -347,7 +352,31 @@ ${t.shlokaHero ? '' : `    <div class="deva st" style="--d:0">॥ श्री �
     </div>
   </section>
 
+${t.events2 ? `  <section class="sec rv">${corners}
+    <div class="eyebrow st">Celebrations</div>
+    <h2 class="h st" style="--d:1">Pre-Wedding Events</h2>
+    ${divider}
+    <div class="date-h st" style="--d:2">Wednesday, 16 December</div>
+    <div class="tl">${rev(3, '7:00 PM', '', 'The Yes Moment', 'Ring Ceremony followed by dinner', 'Hotel Atithi, Agra')}</div>
+    <div class="date-h st" style="--d:4">Thursday, 17 December</div>
+    <div class="tl">${rev(5, '4:00 PM', 'Pyaar ka Rang', 'Mehendi', '', 'Hotel Atithi, Agra')}</div>
+    <div class="date-h st" style="--d:6">Friday, 18 December</div>
+    <div class="tl">${rev(7, '8:00 AM', 'The Saffron Morning', 'Sunshine Ceremony', 'Haldi · A Splash of Yellow', 'Hotel Atithi, Agra')}</div>
+  </section>
+
   <section class="sec rv">${corners}
+    <div class="eyebrow st">The wedding day</div>
+    <h2 class="h st" style="--d:1">Program Timeline</h2>
+    ${divider}
+    <div class="date-h st" style="--d:2">Friday, 18 December 2026</div>
+    <div class="tl">
+      ${rev(3, '4:00 PM', 'With Blessings &amp; Grace', 'Tilak', '', 'Hotel Atithi, Agra')}
+      ${rev(4, '6:00 PM', 'Dhol, Dance &amp; Dhamaal', 'Baraat Prasthan', '', 'Near The Ramana Grand')}
+      ${rev(5, '8:00 PM onwards', '18 December', 'The Beginning of Forever', 'Shubh Vivah &amp; Preeti Bhoj', 'The Ramana Grand, Agra')}
+    </div>
+  </section>
+
+` : `  <section class="sec rv">${corners}
     <div class="eyebrow st">The wedding day</div>
     <h2 class="h st" style="--d:1">Program Timeline</h2>
     ${divider}
@@ -371,17 +400,17 @@ ${t.shlokaHero ? '' : `    <div class="deva st" style="--d:0">॥ श्री �
     <div class="tl"><div class="ev st" style="--d:7"><div class="t">8:00 AM</div><div class="w">Haldi</div><div class="s">Hotel Atithi, Agra</div></div></div>
   </section>
 
-  <section class="sec rv">${corners}
+`}  <section class="sec rv">${corners}
     <div class="eyebrow st">Where</div>
     <h2 class="h st" style="--d:1">Venue</h2>
     ${divider}
     <div class="venue st" style="--d:2">
-      <h3>The Ramana Grand</h3><p>Agra · ${t.baraatPlace ? (t.baraatName || 'Baraat') + ' &amp; ' : ''}${t.vivahName || 'Shubh Vivah'}</p>
+      <h3>The Ramana Grand</h3><p>Agra · ${t.events2 ? 'Baraat Prasthan &amp; The Beginning of Forever' : ''}${t.events2 ? '' : t.baraatPlace ? (t.baraatName || 'Baraat') + ' &amp; ' : ''}${t.events2 ? '' : (t.vivahName || 'Shubh Vivah')}</p>
       <div class="map"><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=The+Ramana+Grand+Agra">Open in Maps ↗</a>
         <iframe loading="lazy" title="Map of The Ramana Grand, Agra" src="https://maps.google.com/maps?q=The%20Ramana%20Grand%2C%20Agra&amp;z=15&amp;output=embed"></iframe></div>
     </div>
     <div class="venue st" style="--d:3">
-      <h3>Hotel Atithi</h3><p>Agra · ${t.baraatPlace ? 'Pre-wedding functions &amp; Tilak' : 'Pre-wedding functions, Tilak &amp; Baraat'}</p>
+      <h3>Hotel Atithi</h3><p>Agra · ${t.events2 ? 'Ring Ceremony, Mehendi, Haldi &amp; Tilak' : t.baraatPlace ? 'Pre-wedding functions &amp; Tilak' : 'Pre-wedding functions, Tilak &amp; Baraat'}</p>
       <div class="map"><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Atithi+Agra">Open in Maps ↗</a>
         <iframe loading="lazy" title="Map of Hotel Atithi, Agra" src="https://maps.google.com/maps?q=Hotel%20Atithi%2C%20Agra&amp;z=15&amp;output=embed"></iframe></div>
     </div>

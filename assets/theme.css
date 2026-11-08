@@ -329,6 +329,9 @@ main::before{content:"";position:absolute;inset:0;background:var(--bg-tex,none);
 .in .tl .ev::before{transform:scale(1)}
 .tl .t{font-family:var(--display);font-size:14px;letter-spacing:.12em;color:var(--accent-deep)}
 .tl .w{font-family:var(--display);font-size:21px;color:var(--head);line-height:1.25}
+.tl .ev.rich .w{font-family:var(--script);font-size:clamp(30px,8.5vw,38px);line-height:1.15;margin:2px 0}
+.tl .tg{font-family:var(--display);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent-deep);opacity:.85;margin-top:4px}
+.tl .ev.rich .s{margin-top:4px}
 .tl .s{font-size:15.5px;color:var(--muted);font-style:italic}
 
 /* venue */
