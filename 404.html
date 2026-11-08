@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sanchit &amp; Muskan</title>
+<script>
+// Friendly links: /violet/s, /violet/all, /violet/family, /violet/friends ... -> /violet/S/, /violet/A/, /violet/N/
+(function () {
+  var m = location.pathname.match(/^\/([a-z0-9-]+)\/([A-Za-z]+)\/?$/);
+  var map = { s: 'S', all: 'S', a: 'A', family: 'A', n: 'N', friends: 'N', guests: 'N', guest: 'N' };
+  if (m && map[m[2].toLowerCase()] && m[2] !== map[m[2].toLowerCase()]) { location.replace('/' + m[1] + '/' + map[m[2].toLowerCase()] + '/' + location.search); return; }
+  location.replace('/');
+})();
+</script></head><body style="background:#16120d"></body></html>

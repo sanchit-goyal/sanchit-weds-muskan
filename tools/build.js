@@ -274,7 +274,7 @@ function bgFlora() {
 }
 
 /* ---------- page ---------- */
-function page(t) {
+function page(t, G = 'S', P = '../') {
   const [script, display] = t.fonts;
   const v = { ...t.v };
   const defaults = { 'o1': v.o2 || '#333', 'o2': v.o1 || '#555', 'o-frame': v.bg, 'hero-bg': v.bg, sky1: v.bg, sky2: v.card || v.bg, sun: v.light, mt1: v.leaf, mt2: v.leaf, water1: v.sky1 || v.bg, water2: v.bg, pal: v.card, win: v.light, arch: v.card, moon: '#fff', 'o-veil': 'transparent' };
@@ -299,13 +299,13 @@ function page(t) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${fontsHref([script, display])}">
-<link rel="stylesheet" href="../assets/theme.css?v=${V('theme.css')}">${t.shloka ? '\n<link rel="stylesheet" href="../assets/shloka.css?v=' + V('shloka.css') + '">' : ''}
+<link rel="stylesheet" href="${P}assets/theme.css?v=${V('theme.css')}">${t.shloka ? '\n<link rel="stylesheet" href="' + P + 'assets/shloka.css?v=' + V('shloka.css') + '">' : ''}
 <style>${css}${t.noMusicBtn ? '#music{display:none!important}' : ''}</style>
 </head>
 <body class="locked${t.dark ? ' dark' : ''}${t.bgFlora ? ' has-flora' : ''}">
 ${DEFS}
 ${t.bgFlora ? bgFlora() + '\n' : ''}<canvas id="fx" aria-hidden="true"></canvas><canvas id="burst" aria-hidden="true"></canvas>
-${t.noMusic ? '' : '<audio id="bgm" src="../assets/shubh-aarambh.mp3" loop preload="auto"></audio>'}
+${t.noMusic ? '' : '<audio id="bgm" src="' + P + 'assets/shubh-aarambh.mp3" loop preload="auto"></audio>'}
 <button id="music" aria-label="Mute music" hidden><span class="bars"><i></i><i></i><i></i><i></i></span></button>
 
 ${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
@@ -371,24 +371,24 @@ ${t.shlokaHero ? '' : `    <div class="deva st" style="--d:0">॥ श्री �
     </div>
   </section>
 
-${t.events2 ? `  <section class="sec rv">${corners}
+${t.events2 ? `${G !== 'N' ? `  <section class="sec rv">${corners}
     <div class="eyebrow st">Celebrations</div>
     <h2 class="h st" style="--d:1">Pre-Wedding Events</h2>
     ${divider}
     <div class="date-h st" style="--d:2">Wednesday, 16 December</div>
     <div class="tl">${rev(3, '7:00 PM', '', 'The Yes Moment', 'Ring Ceremony followed by dinner', 'Hotel Atithi, Agra')}</div>
-    <div class="date-h st" style="--d:4">Thursday, 17 December</div>
+${G === 'S' ? `    <div class="date-h st" style="--d:4">Thursday, 17 December</div>
     <div class="tl">${rev(5, '4:00 PM', 'Pyaar ka Rang', 'Mehendi', '', 'Hotel Atithi, Agra')}</div>
     <div class="date-h st" style="--d:6">Friday, 18 December</div>
     <div class="tl">${rev(7, '8:00 AM', 'The Saffron Soirée', 'The Golden Hour', 'A Touch of Sunshine', 'Hotel Atithi, Agra')}</div>
-  </section>
-
+` : ''}  </section>
+` : ''}
   <section class="sec rv">${corners}
     <div class="eyebrow st">Friday · 18 December</div>
     <h2 class="h st" style="--d:1">Wedding</h2>
     ${divider}
     <div class="tl">
-      ${rev(3, '4:00 PM', 'With Blessings &amp; Grace', 'Tilak', '', 'Hotel Atithi, Agra')}
+      ${G === 'S' ? rev(3, '4:00 PM', 'With Blessings &amp; Grace', 'Tilak', '', 'Hotel Atithi, Agra') : ''}
       ${rev(4, '6:00 PM', 'Dhol, Dance &amp; Dhamaal', 'Baraat Prasthan', '', 'Near The Ramana Grand')}
       ${rev(5, '8:00 PM onwards', '', 'The Beginning of Forever', 'Shubh Vivah &amp; Preeti Bhoj', 'The Ramana Grand, Agra')}
     </div>
@@ -427,12 +427,12 @@ ${t.events2 ? `  <section class="sec rv">${corners}
       <div class="map"><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=The+Ramana+Grand+Agra">Open in Maps ↗</a>
         <iframe loading="lazy" title="Map of The Ramana Grand, Agra" src="https://maps.google.com/maps?q=The%20Ramana%20Grand%2C%20Agra&amp;z=15&amp;output=embed"></iframe></div>
     </div>
-    <div class="venue st" style="--d:3">
-      <h3>Hotel Atithi</h3><p>Agra · ${t.events2 ? 'Ring Ceremony, Mehendi, Haldi &amp; Tilak' : t.baraatPlace ? 'Pre-wedding functions &amp; Tilak' : 'Pre-wedding functions, Tilak &amp; Baraat'}</p>
+${G !== 'N' ? `    <div class="venue st" style="--d:3">
+      <h3>Hotel Atithi</h3><p>Agra · ${t.events2 ? (G === 'A' ? 'The Yes Moment' : 'Ring Ceremony, Mehendi, Haldi &amp; Tilak') : t.baraatPlace ? 'Pre-wedding functions &amp; Tilak' : 'Pre-wedding functions, Tilak &amp; Baraat'}</p>
       <div class="map"><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Atithi+Agra">Open in Maps ↗</a>
         <iframe loading="lazy" title="Map of Hotel Atithi, Agra" src="https://maps.google.com/maps?q=Hotel%20Atithi%2C%20Agra&amp;z=15&amp;output=embed"></iframe></div>
     </div>
-  </section>
+` : ''}  </section>
 
   <section class="sec rv">${corners}
     <p class="big st">We can't wait to celebrate with you!</p>
@@ -444,7 +444,7 @@ ${t.events2 ? `  <section class="sec rv">${corners}
 <footer>${t.inviteCard ? "" : "Sanchit &amp; Muskan"}<small>18 · 12 · 2026 · AGRA</small></footer>
 
 <script>window.THEME=${JSON.stringify(cfg)}</script>
-<script src="../assets/theme.js?v=${V('theme.js')}"></script>${t.shloka ? '\n<script src="../assets/shloka.js?v=' + V('shloka.js') + '"></script>' : ''}
+<script src="${P}assets/theme.js?v=${V('theme.js')}"></script>${t.shloka ? '\n<script src="' + P + 'assets/shloka.js?v=' + V('shloka.js') + '"></script>' : ''}
 </body>
 </html>
 `;
@@ -521,6 +521,10 @@ footer{text-align:center;color:var(--mut);font-size:14px;margin-top:40px;letter-
 for (const t of THEMES) {
   fs.mkdirSync(path.join(ROOT, t.slug), { recursive: true });
   fs.writeFileSync(path.join(ROOT, t.slug, 'index.html'), page(t));
+  if (t.variants) for (const g of ['S', 'A', 'N']) {
+    fs.mkdirSync(path.join(ROOT, t.slug, g), { recursive: true });
+    fs.writeFileSync(path.join(ROOT, t.slug, g, 'index.html'), page(t, g, '../../'));
+  }
 }
 if (!process.argv.includes('--no-gallery')) fs.writeFileSync(path.join(ROOT, 'index.html'), gallery());
 console.log('built', THEMES.length, 'themes');
