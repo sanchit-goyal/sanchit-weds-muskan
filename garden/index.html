@@ -171,6 +171,8 @@ canvas#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:non
 .inv-rule{width:160px;height:1px;margin:16px auto;background:linear-gradient(90deg,transparent,var(--sage),transparent)}
 .inv .fit{white-space:nowrap;margin-left:-12px;margin-right:-12px}
 #music{display:none!important}
+.tg{font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.8;margin-top:3px}
+.hero .fit,.stage .fit{white-space:nowrap;max-width:calc(100vw - 36px);margin-left:auto;margin-right:auto;font-size:clamp(8.5px,2.45vw,13px)!important;letter-spacing:0}
 </style>
 </head>
 <body class="locked">
@@ -223,11 +225,11 @@ canvas#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:non
 
   <div class="stage-inner">
     <div class="hero-deva">॥ श्री गणेशाय नमः ॥<small>वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥</small></div>
-    <div class="kicker">We're getting married</div>
+    <div class="kicker" style="font-size:clamp(12px,3.75vw,16px);font-style:italic;font-weight:400;line-height:1.45;letter-spacing:0;white-space:nowrap">We cordially invite you to the sacred occasion<br>of the wedding celebrations of our beloved son</div>
     <div class="line"></div>
-    <div><h1 class="bride-groom">Sanchit</h1><div class="parent">Son of Smt. Seema Goyal &amp; Shri Sanjay Goyal</div></div>
+    <div><h1 class="bride-groom">Sanchit</h1><div class="parent fit">S/o Smt. Seema Goyal &amp; Shri Sanjay Goyal</div><div class="parent fit">G/S/o Late Smt. Sarla Devi &amp; Late Shri Roop Kishore Goyal</div></div>
     <div class="amp">&amp;</div>
-    <div><div class="bride-groom">Muskan</div><div class="parent">Daughter of Smt. Anjali Jain &amp; Late Shri Atul Jain</div></div>
+    <div><div class="bride-groom">Muskan</div><div class="parent fit">D/o Smt. Anjali Jain &amp; Late Shri Atul Jain</div></div>
   </div>
 
   <!-- garden: fountain, cypress, roses -->
@@ -266,19 +268,7 @@ canvas#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:non
 
 <main>
   <!-- welcome -->
-  <section class="welcome wrap fade">
-    <div class="inv">
-      <div class="inv-h">With the Heavenly Blessings<br>of Grandparents</div>
-      <div class="inv-n fit">Late Smt. Sarla Devi &amp; Late Shri Roop Kishore Goyal</div>
-      <div class="inv-rule"></div>
-      <div class="inv-p fit">Smt. Seema Goyal &amp; Shri Sanjay Goyal</div>
-      <div class="inv-i">We cordially invite you to the sacred occasion<br>of the wedding celebrations of our beloved son</div>
-      <div class="inv-s">Sanchit</div>
-      <div class="inv-w">with</div>
-      <div class="inv-s">Muskan</div>
-      <div class="inv-n fit">D/o Smt. Anjali Jain &amp; Late Shri Atul Jain</div>
-    </div>
-  </section>
+  
 
   <!-- scratch to reveal -->
   <section class="wrap fade" id="scratchSec">
@@ -291,13 +281,13 @@ canvas#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:non
       <div class="msg" aria-live="polite">
         <div class="sd">Save the Date</div>
         <div class="d">December 18, 2026</div>
-        <div class="t">Friday · 8:00 PM onwards</div>
+        <div class="t">Friday · 6:00 PM onwards</div>
       </div>
       <canvas id="scratchCanvas" aria-label="Scratch the heart to reveal the wedding date" role="img"></canvas>
     </div>
     <div class="hint" id="scratchHint">Scratch the heart with your finger</div>
     <div class="forever">Our forever begins</div>
-    <a class="btn save" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sanchit%20%26%20Muskan%20%E2%80%93%20Wedding&dates=20261218T200000/20261219T010000&ctz=Asia/Kolkata&location=The%20Ramana%20Grand%2C%20Agra&details=Shubh%20Vivah%20of%20Sanchit%20Goyal%20%26%20Muskan%20Agarwal">
+    <a class="btn save" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Sanchit%20%26%20Muskan%20%E2%80%93%20Wedding&dates=20261218T180000/20261219T010000&ctz=Asia/Kolkata&location=The%20Ramana%20Grand%2C%20Agra&details=Shubh%20Vivah%20of%20Sanchit%20Goyal%20%26%20Muskan%20Agarwal">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Save the date</a>
   </section>
 
@@ -314,25 +304,35 @@ canvas#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:non
   </section>
 
   <!-- timeline -->
-  <section class="wrap fade">
+  <!--G:SA--><section class="wrap fade">
     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-    <h2 class="h-script">Program Timeline</h2>
+    <h2 class="h-script">Pre-Wedding Events</h2>
     <div class="divider">♥</div>
 
     <div class="day-tag">Wednesday · 16 December</div>
     <ul class="timeline">
-      <li><div class="when">7:00 P.M. onwards</div><div class="what">The Yes Moment</div><div class="fancy">Rings &amp; Rhythm</div><div class="where">Hotel Atithi, Agra</div></li>
+      <li><div class="when">7:00 P.M.</div><div class="fancy">The Yes Moment</div><div class="tg">Ring Ceremony followed by dinner</div><div class="where">Hotel Atithi, Agra</div></li>
     </ul>
-    <div class="day-tag">Thursday · 17 December</div>
+    <!--g:S--><div class="day-tag">Thursday · 17 December</div>
     <ul class="timeline">
-      <li><div class="when">4:00 P.M. onwards</div><div class="what">Mehendi</div><div class="fancy">Mehendi Lagake Rakhna</div><div class="where">Hotel Atithi, Agra</div></li>
+      <li><div class="when">4:00 P.M.</div><div class="tg">Pyaar ka Rang</div><div class="fancy">Mehendi</div><div class="where">Hotel Atithi, Agra</div></li>
     </ul>
     <div class="day-tag">Friday · 18 December</div>
     <ul class="timeline">
-      <li><div class="when">8:00 A.M. onwards</div><div class="what">Haldi</div><div class="fancy">Haldi Hai, Haldi Hai!</div><div class="where">Hotel Atithi, Agra</div></li>
-      <li><div class="when">4:00 P.M.</div><div class="what">Tilak &amp; Ghudchadi</div><div class="where">Hotel Atithi, Agra</div></li>
-      <li><div class="when">6:00 P.M.</div><div class="what">Baraat Nikasi</div><div class="where">near The Ramana Grand, Agra</div></li>
-      <li><div class="when">8:00 P.M. onwards</div><div class="what">Preeti Bhoj</div><div class="fancy">Happily Ever Agra</div><div class="where">The Ramana Grand, Agra</div></li>
+      <li><div class="when">8:00 A.M.</div><div class="tg">The Saffron Soirée</div><div class="fancy">The Golden Hour</div><div class="tg">A Touch of Sunshine</div><div class="where">Hotel Atithi, Agra</div></li>
+    </ul><!--/g-->
+  </section><!--/G-->
+
+  <section class="wrap fade">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <h2 class="h-script">Wedding</h2>
+    <div class="divider">♥</div>
+
+    <div class="day-tag">Friday · 18 December</div>
+    <ul class="timeline">
+      <!--g:S--><li><div class="when">4:00 P.M.</div><div class="tg">With Blessings &amp; Grace</div><div class="fancy">Tilak</div><div class="where">Hotel Atithi, Agra</div></li><!--/g-->
+      <li><div class="when">6:00 P.M.</div><div class="tg">Dhol, Dance &amp; Dhamaal</div><div class="fancy">Baraat Prasthan</div><div class="where">Near The Ramana Grand</div></li>
+      <li><div class="when">8:00 P.M. onwards</div><div class="fancy">The Beginning of Forever</div><div class="tg">Shubh Vivah &amp; Preeti Bhoj</div><div class="where">The Ramana Grand, Agra</div></li>
     </ul>
   </section>
 
@@ -341,17 +341,17 @@ canvas#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:non
     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
     <h2 class="h-script">Venue</h2>
     <div class="divider">♥</div>
-    <div class="venue">
+    <!--G:SA--><div class="venue">
       <h3>Hotel Atithi</h3>
-      <p>Agra · The Yes Moment, Mehendi, Haldi &amp; Tilak</p>
+      <p>Agra · <!--g:S-->Ring Ceremony, Mehendi, Haldi &amp; Tilak<!--/g--><!--g:A-->The Yes Moment<!--/g--></p>
       <div class="map">
         <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Hotel+Atithi+Agra">Open in Maps ↗</a>
         <iframe loading="lazy" title="Map of Hotel Atithi, Agra" src="https://maps.google.com/maps?q=Hotel%20Atithi%2C%20Agra&z=15&output=embed"></iframe>
       </div>
     </div>
-    <div class="venue">
+    <!--/G--><div class="venue">
       <h3>The Ramana Grand</h3>
-      <p>Agra · Baraat Nikasi &amp; Preeti Bhoj</p>
+      <p>Agra · Baraat Prasthan &amp; The Beginning of Forever</p>
       <div class="map">
         <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=The+Ramana+Grand+Agra">Open in Maps ↗</a>
         <iframe loading="lazy" title="Map of The Ramana Grand, Agra" src="https://maps.google.com/maps?q=The%20Ramana%20Grand%2C%20Agra&z=15&output=embed"></iframe>
@@ -464,7 +464,7 @@ canvas#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:non
   var rt; addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(initScratch, 200); });
 
   /* ---------- countdown: 18 Dec 2026, 8:00 PM IST ---------- */
-  var target = Date.UTC(2026,11,18,14,30,0);
+  var target = Date.UTC(2026,11,18,12,30,0);
   function pad(n){ return n<10 ? '0'+n : ''+n; }
   function tick(){
     var d = Math.max(0, target - Date.now());

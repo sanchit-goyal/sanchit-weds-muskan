@@ -283,7 +283,7 @@ function page(t, G = 'S', P = '../') {
   if (!v['o-bg']) v['o-bg'] = v.o2;
   v.script = `"${t.script || script}",cursive`; v.display = `"${display}",serif`; v.serif = '"Cormorant Garamond",Georgia,serif';
   const css = ':root{' + Object.entries(v).map(([k, x]) => `--${k}:${x}`).join(';') + '}';
-  const cfg = { target: t.vivahTime ? Date.UTC(2026, 11, 18, 14, 30) : undefined, open: t.open, fx: t.fx, petal: t.petal, spark: t.spark, burst: t.burst, scratch: t.scratch };
+  const cfg = { target: t.calStart ? Date.UTC(2026, 11, 18, 12, 30) : t.vivahTime ? Date.UTC(2026, 11, 18, 14, 30) : undefined, open: t.open, fx: t.fx, petal: t.petal, spark: t.spark, burst: t.burst, scratch: t.scratch };
   const themeColor = (v['o-bg'].match(/#[0-9a-f]{6}/i) || [v.bg])[0];
 
   return `<!doctype html>
