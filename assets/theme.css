@@ -194,7 +194,8 @@ a{color:inherit}
 
 /* --- card: cinematic letterbox, card flips and fills the screen --- */
 .o-card{display:grid;place-items:center}
-.o-card .bars::before,.o-card .bars::after{content:"";position:absolute;left:0;right:0;height:11vh;background:#000;z-index:30;transition:transform 1.4s cubic-bezier(.6,0,.2,1) 1.6s}
+.o-card .bars{position:absolute;inset:0;z-index:30;pointer-events:none}
+.o-card .bars::before,.o-card .bars::after{content:"";position:absolute;left:0;right:0;height:7vh;background:#000;z-index:30;transition:transform 1.4s cubic-bezier(.6,0,.2,1) 1.6s}
 .o-card .bars::before{top:0}.o-card .bars::after{bottom:0}
 #op.open.o-card .bars::before{transform:translateY(-100%)}#op.open.o-card .bars::after{transform:translateY(100%)}
 .o-card .flip{position:relative;width:min(74vw,360px);aspect-ratio:.66;transform-style:preserve-3d;transition:transform 1.4s cubic-bezier(.6,0,.2,1);z-index:10;animation:float 5s ease-in-out infinite}
