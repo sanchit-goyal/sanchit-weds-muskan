@@ -320,7 +320,7 @@ ${t.shloka ? shlokaIntro() + '\n' : ''}${opening(t)}
     ${t.mergedHero ? '<div class="par fit h-in" style="--i:3">S/o Smt. Seema Goyal &amp; Shri Sanjay Goyal</div>\n    <div class="par fit h-in" style="--i:3">G/S/o Late Smt. Sarla Devi &amp; Late Shri Roop Kishore Goyal</div>' : '<div class="par h-in" style="--i:3">Son of Smt. Seema Goyal &amp; Shri Sanjay Goyal</div>'}
     <div class="amp h-in" style="--i:4">&amp;</div>
     <div class="name" style="--i:5">Muskan</div>
-    ${t.mergedHero ? '<div class="par fit h-in" style="--i:6">D/o Smt. Anjali Jain &amp; Late Shri Atul Jain</div>' : '<div class="par h-in" style="--i:6">Daughter of Smt. Anjali Jain &amp; Late Shri Atul Jain</div>'}
+    ${t.mergedHero ? '<div class="par fit h-in" style="--i:6">D/o Smt. Anjali Jain &amp; Late Shri Atul Jain</div>\n    <div class="par fit h-in" style="--i:6">G/D/o Smt. Meena Jain &amp; Late Shri Kamal Kumar Jain</div>' : '<div class="par h-in" style="--i:6">Daughter of Smt. Anjali Jain &amp; Late Shri Atul Jain</div>'}
 ${t.noHeroDate ? '' : '    <div class="date h-in" style="--i:7"><i></i>18 · 12 · 2026<i></i></div>'}
   </div>
   <div class="scroll-cue">SCROLL<i></i></div>
@@ -341,6 +341,7 @@ ${t.shlokaHero ? '' : `    <div class="deva st" style="--d:0">॥ श्री �
       <div class="inv-w st" style="--d:5">with</div>
       <div class="inv-s st" style="--d:6">Muskan</div>
       <div class="inv-n fit st" style="--d:7">D/o Smt. Anjali Jain &amp; Late Shri Atul Jain</div>
+      <div class="inv-n fit st" style="--d:8">G/D/o Smt. Meena Jain &amp; Late Shri Kamal Kumar Jain</div>
     </div>` : `
     <p class="memory st" style="--d:1">In loving memory of<br>Late Smt. Sarla Devi &amp; Late Shri Roop Kishore Goyal</p>
     <p class="st" style="--d:2">With the blessings of our elders, we are honoured to welcome you to the wedding of <b>Sanchit</b> &amp; <b>Muskan</b>, as they begin their journey together in faith and love.</p>
