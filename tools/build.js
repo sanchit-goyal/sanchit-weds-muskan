@@ -460,7 +460,7 @@ function gallery() {
     ...THEMES.map(t => ({ slug: t.slug, name: t.name, blurb: t.blurb, open: OPEN_LABEL[t.open], sw: [t.v.bg, (t.v.o1 || t.v.m || '#000').startsWith('#') ? (t.v.o2 && t.v.o2.startsWith('#') ? t.v.o2 : t.v.o1 || t.v.m) : t.v.m, t.v.accent], ink: t.v.head, script: t.script || t.fonts[0], dark: t.dark }))
   ];
   const fontsUsed = [...new Set(THEMES.map(t => t.fonts[0]))];
-  const cards = items.map((it, i) => `<a class="card" href="${it.slug}/" style="--i:${i};--a:${it.sw[0]};--b:${it.sw[1]};--c:${it.sw[2]}">
+  const cards = items.map((it, i) => `<a class="card" href="${it.slug === LIVE ? "/" + LIVE + "/" : it.slug + "/"}" style="--i:${i};--a:${it.sw[0]};--b:${it.sw[1]};--c:${it.sw[2]}">
       <div class="pv${it.dark ? ' dk' : ''}"><div class="dr l"></div><div class="dr r"></div><div class="mono" style="font-family:'${it.script || 'Great Vibes'}',cursive"><span>S<small>&amp;</small>M</span></div></div>
       <div class="meta"><div class="nm">${it.name}</div><div class="op">${it.open}</div><div class="bl">${it.blurb}</div></div></a>`).join('\n    ');
   return `<!doctype html>
@@ -519,13 +519,22 @@ footer{text-align:center;color:var(--mut);font-size:14px;margin-top:40px;letter-
 `;
 }
 
+// Live site = Violet only (root shows the friends version N). Every other design is archived under /archive/ behind a simple password screen.
+const LIVE = 'violet';
+const GATE = fs.readFileSync(path.join(__dirname, 'gate.snippet.html'), 'utf8');
+const gate = html => html.replace('<head>', '<head>\n' + GATE.trim());
 for (const t of THEMES) {
-  fs.mkdirSync(path.join(ROOT, t.slug), { recursive: true });
-  fs.writeFileSync(path.join(ROOT, t.slug, 'index.html'), page(t));
+  const live = t.slug === LIVE;
+  const dir = live ? path.join(ROOT, t.slug) : path.join(ROOT, 'archive', t.slug);
+  const up = live ? '' : '../';
+  const w = html => live ? html : gate(html);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, 'index.html'), w(page(t, 'S', up + '../')));
   if (t.variants) for (const g of ['S', 'A', 'N']) {
-    fs.mkdirSync(path.join(ROOT, t.slug, g), { recursive: true });
-    fs.writeFileSync(path.join(ROOT, t.slug, g, 'index.html'), page(t, g, '../../'));
+    fs.mkdirSync(path.join(dir, g), { recursive: true });
+    fs.writeFileSync(path.join(dir, g, 'index.html'), w(page(t, g, up + '../../')));
   }
+  if (live) fs.writeFileSync(path.join(ROOT, 'index.html'), page(t, 'N', ''));
 }
-if (!process.argv.includes('--no-gallery')) fs.writeFileSync(path.join(ROOT, 'index.html'), gallery());
+if (!process.argv.includes('--no-gallery')) fs.writeFileSync(path.join(ROOT, 'archive', 'index.html'), gate(gallery()));
 console.log('built', THEMES.length, 'themes');

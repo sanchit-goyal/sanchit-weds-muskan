@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Archive · Sanchit &amp; Muskan</title>
+<style>
+:root{--bg:#f6f1ea;--ink:#4b3a2c;--accent:#8a6a4a;--line:#d9cbb6}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--ink);font-family:Georgia,serif;padding:16px;box-sizing:border-box}
+form{width:100%;max-width:320px;text-align:center}
+h1{font-weight:400;font-size:26px;margin:0 0 6px}p{margin:0 0 22px;font-style:italic;color:var(--accent)}
+input{width:100%;box-sizing:border-box;padding:12px 14px;font-size:16px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+button{margin-top:12px;width:100%;padding:12px;font-size:15px;letter-spacing:.08em;border:0;border-radius:10px;background:var(--accent);color:#fff;cursor:pointer}
+.err{color:#a33;font-size:14px;min-height:20px;margin-top:10px}
+</style></head><body>
+<form id="f"><h1>Design archive</h1><p>Enter the password to continue</p>
+<input id="pw" type="password" autocomplete="current-password" aria-label="Password" autofocus>
+<button type="submit">Open</button><div class="err" id="err"></div></form>
+<script>
+var H='0b8414d54bc59fb9ffbfbb79bc063feea9e76bf5be26e6b94efe7ce2368df43c';
+async function sha(s){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('')}
+document.getElementById('f').addEventListener('submit',async function(e){e.preventDefault();
+  var h=await sha(document.getElementById('pw').value);
+  if(h!==H){document.getElementById('err').textContent='Wrong password';return}
+  try{localStorage.setItem('gw_arch',H)}catch(x){}
+  var n=new URLSearchParams(location.search).get('next')||'/archive/';
+  if(!/^\/archive\//.test(n)||/^\/archive\/login/.test(n))n='/archive/';
+  location.replace(n);
+});
+</script></body></html>
