@@ -1,17 +1,36 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sanchit &amp; Muskan</title>
+<meta name="robots" content="noindex">
+<title>Page not found · Sanchit &amp; Muskan</title>
 <script>
-// Live site = Violet design at /S/, /A/, /N/ (home -> /N/). Short links: /s, /family, /friends ... -> /S/, /A/, /N/.
-// Archive friendly links: /archive/<design>/family etc. Any other unknown or old design link (e.g. /royal/A) -> home page.
+// Only these shortcuts redirect: /s /all -> /S/, /a /family -> /A/, /n /friends /guest(s) -> /N/,
+// and /archive/<design>/family etc. Every other unknown link shows this 404 page with a link home.
 (function () {
-  var r = location.pathname.match(/^\/([A-Za-z]+)\/?$/);
-  var map0 = { s: 'S', all: 'S', a: 'A', family: 'A', n: 'N', friends: 'N', guests: 'N', guest: 'N' };
-  if (r && map0[r[1].toLowerCase()]) { location.replace('/' + map0[r[1].toLowerCase()] + '/' + location.search); return; }
-  var m = location.pathname.match(/^\/((?:archive\/)?[a-z0-9-]+)\/([A-Za-z]+)\/?$/);
   var map = { s: 'S', all: 'S', a: 'A', family: 'A', n: 'N', friends: 'N', guests: 'N', guest: 'N' };
-  var live = m && m[1].indexOf('archive/') === 0;
-  if (live && map[m[2].toLowerCase()] && m[2] !== map[m[2].toLowerCase()]) { location.replace('/' + m[1] + '/' + map[m[2].toLowerCase()] + '/' + location.search); return; }
-  location.replace('/');
+  var r = location.pathname.match(/^\/([A-Za-z]+)\/?$/);
+  if (r && map[r[1].toLowerCase()]) { location.replace('/' + map[r[1].toLowerCase()] + '/' + location.search); return; }
+  var m = location.pathname.match(/^\/(archive\/[a-z0-9-]+)\/([A-Za-z]+)\/?$/);
+  if (m && map[m[2].toLowerCase()] && m[2] !== map[m[2].toLowerCase()]) { location.replace('/' + m[1] + '/' + map[m[2].toLowerCase()] + '/' + location.search); }
 })();
-</script></head><body style="background:#16120d"></body></html>
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;1,400&display=swap">
+<style>
+:root{--bg:#f7f4fa;--ink:#4a3f58;--muted:#86799a;--head:#5e4a7d;--accent:#a98ec8;--btn:#6e568f;--line:rgba(160,135,195,.35)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px 16px;background:radial-gradient(ellipse at 50% 30%,#fdfbff,var(--bg) 70%);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;text-align:center}
+main{max-width:420px}
+.code{font-size:15px;letter-spacing:.4em;color:var(--muted);margin:0 0 6px}
+h1{font-family:"Great Vibes",cursive;font-weight:400;color:var(--head);font-size:clamp(44px,13vw,64px);margin:0 0 8px;line-height:1.1}
+.rule{width:120px;height:1px;background:var(--line);margin:14px auto 18px}
+p{font-size:19px;line-height:1.5;margin:0 0 26px;font-style:italic;color:var(--muted)}
+a.btn{display:inline-block;padding:12px 28px;border-radius:999px;background:var(--btn);color:#fff;text-decoration:none;font-size:17px;letter-spacing:.06em}
+a.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style></head>
+<body><main>
+<p class="code">404</p>
+<h1>Page not found</h1>
+<div class="rule"></div>
+<p>This link doesn&apos;t lead anywhere.<br>Your invitation is waiting on the home page.</p>
+<a class="btn" href="/">Go to the invitation</a>
+</main></body></html>
