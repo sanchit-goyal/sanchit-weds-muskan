@@ -19,7 +19,7 @@ async function sha(s){var b=await crypto.subtle.digest('SHA-256',new TextEncoder
 document.getElementById('f').addEventListener('submit',async function(e){e.preventDefault();
   var h=await sha(document.getElementById('pw').value);
   if(h!==H){document.getElementById('err').textContent='Wrong password';return}
-  try{localStorage.setItem('gw_arch',H)}catch(x){}
+  try{sessionStorage.setItem('gw_arch',H)}catch(x){}
   var n=new URLSearchParams(location.search).get('next')||'/archive/';
   if(!/^\/archive\//.test(n)||/^\/archive\/login/.test(n))n='/archive/';
   location.replace(n);
