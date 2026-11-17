@@ -379,7 +379,7 @@ ${t.events2 ? `${G !== 'N' ? `  <section class="sec rv">${corners}
     <div class="date-h st" style="--d:2">Wednesday, 16 December</div>
     <div class="tl">${rev(3, '7:00 PM', '', 'The Yes Moment', 'Ring Ceremony followed by dinner', 'Hotel Atithi, Agra')}</div>
 ${G === 'S' ? `    <div class="date-h st" style="--d:4">Thursday, 17 December</div>
-    <div class="tl">${rev(5, '4:00 PM', 'Pyaar ka Rang', 'Mehendi', '', 'Hotel Atithi, Agra')}</div>
+    <div class="tl">${rev(5, '4:00 PM', '', 'Mehendi', 'Green Gathering', 'Hotel Atithi, Agra')}</div>
     <div class="date-h st" style="--d:6">Friday, 18 December</div>
     <div class="tl">${rev(7, '8:00 AM', 'The Saffron Soirée', 'The Golden Hour', 'A Touch of Sunshine', 'Hotel Atithi, Agra')}</div>
 ` : ''}  </section>
