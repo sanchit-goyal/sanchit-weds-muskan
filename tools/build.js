@@ -535,22 +535,28 @@ for (const t of THEMES) {
     fs.writeFileSync(path.join(dir, g, 'index.html'), w(page(t, g, up + '../../')));
   }
   if (live) {
-    // Short guest links at the root: /S (all events), /A (family), /N (friends); home page -> /N/
-    for (const g of ['S', 'A', 'N']) {
-      fs.mkdirSync(path.join(ROOT, g), { recursive: true });
-      fs.writeFileSync(path.join(ROOT, g, 'index.html'), page(t, g, '../'));
-    }
-    fs.writeFileSync(path.join(ROOT, 'index.html'), `<!doctype html>
+    // Guest links: /celebrations (all events), /invitation (family), /wedding (friends); home -> /wedding/.
+    // Old short links /S /A /N forward to the new ones.
+    const NAMES = { S: 'celebrations', A: 'invitation', N: 'wedding' };
+    const stub = (to) => `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sanchit &amp; Muskan · 18.12.2026 · Agra</title>
 <meta name="description" content="Sanchit &amp; Muskan are getting married · 18 December 2026 · Agra">
 <meta property="og:title" content="Sanchit &amp; Muskan · 18.12.2026 · Agra">
 <meta property="og:description" content="You're invited. Tap to open.">
-<meta http-equiv="refresh" content="0; url=/N/">
-<link rel="canonical" href="/N/">
-<script>location.replace('/N/' + location.search + location.hash);</script>
-</head><body style="background:#1b1026"><a href="/N/" style="color:#e9dcff">Open the invitation</a></body></html>
-`);
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url=${to}">
+<link rel="canonical" href="${to}">
+<script>location.replace('${to}' + location.search + location.hash);</script>
+</head><body style="background:#1b1026"><a href="${to}" style="color:#e9dcff">Open the invitation</a></body></html>
+`;
+    for (const g of ['S', 'A', 'N']) {
+      fs.mkdirSync(path.join(ROOT, NAMES[g]), { recursive: true });
+      fs.writeFileSync(path.join(ROOT, NAMES[g], 'index.html'), page(t, g, '../'));
+      fs.mkdirSync(path.join(ROOT, g), { recursive: true });
+      fs.writeFileSync(path.join(ROOT, g, 'index.html'), stub('/' + NAMES[g] + '/'));
+    }
+    fs.writeFileSync(path.join(ROOT, 'index.html'), stub('/wedding/'));
   }
 }
 if (!process.argv.includes('--no-gallery')) fs.writeFileSync(path.join(ROOT, 'archive', 'index.html'), gate(gallery()));

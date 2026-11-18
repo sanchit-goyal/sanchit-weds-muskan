@@ -3,12 +3,13 @@
 <meta name="robots" content="noindex">
 <title>Page not found · Sanchit &amp; Muskan</title>
 <script>
-// Only these shortcuts redirect: /s /all -> /S/, /a /family -> /A/, /n /friends /guest(s) -> /N/,
-// and /archive/<design>/family etc. Every other unknown link shows this 404 page with a link home.
+// Guest links are /celebrations, /invitation, /wedding (any capitalisation works; /s /a /n forward too).
+// Archive: /archive/<design>/family etc. Every other unknown link shows this 404 page with a link home.
 (function () {
+  var live = { s: 'celebrations', a: 'invitation', n: 'wedding', celebrations: 'celebrations', invitation: 'invitation', wedding: 'wedding' };
   var map = { s: 'S', all: 'S', a: 'A', family: 'A', n: 'N', friends: 'N', guests: 'N', guest: 'N' };
   var r = location.pathname.match(/^\/([A-Za-z]+)\/?$/);
-  if (r && map[r[1].toLowerCase()]) { location.replace('/' + map[r[1].toLowerCase()] + '/' + location.search); return; }
+  if (r && live[r[1].toLowerCase()]) { location.replace('/' + live[r[1].toLowerCase()] + '/' + location.search); return; }
   var m = location.pathname.match(/^\/(archive\/[a-z0-9-]+)\/([A-Za-z]+)\/?$/);
   if (m && map[m[2].toLowerCase()] && m[2] !== map[m[2].toLowerCase()]) { location.replace('/' + m[1] + '/' + map[m[2].toLowerCase()] + '/' + location.search); }
 })();
